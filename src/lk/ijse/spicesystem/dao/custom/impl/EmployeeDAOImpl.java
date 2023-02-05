@@ -92,4 +92,34 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
         return CrudUtil.execute(sql, id);
     }
+
+    @Override
+    public String getEmployeeName(String empId) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT FirstName FROM employee WHERE EmpID = ?";
+
+        String name = null;
+
+        ResultSet result = CrudUtil.execute(sql, empId);
+
+        if(result.next()){
+            name = result.getString("FirstName");
+        }
+
+        return name;
+    }
+
+    @Override
+    public double getEmployeeSalary(String empId) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT SalaryPerDay FROM employee WHERE EmpID = ?";
+
+        double salary = 0;
+
+        ResultSet result = CrudUtil.execute(sql, empId);
+
+        if(result.next()){
+            salary = Double.valueOf(result.getString("SalaryPerDay"));
+        }
+
+        return salary;
+    }
 }

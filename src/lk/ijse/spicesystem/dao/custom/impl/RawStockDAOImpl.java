@@ -22,7 +22,9 @@ public class RawStockDAOImpl implements RawStockDAO {
 
     @Override
     public boolean add(RawStock rawStock) throws SQLException, ClassNotFoundException {
-        return false;
+        String sql = "INSERT INTO RawStock VALUES (?, ?, ?, ?, ?, ?)";
+
+        return CrudUtil.execute(sql, rawStock.getBatchId(), rawStock.getMaterialId(), rawStock.getAmount(), rawStock.getSupplierId(), rawStock.getDate(), rawStock.getAmount());
     }
 
     @Override
@@ -75,5 +77,30 @@ public class RawStockDAOImpl implements RawStockDAO {
         String sql = "UPDATE RawStock SET QtyOnHand = QtyOnHand - ? WHERE BatchID = ?";
 
         return CrudUtil.execute(sql, amount, batchId);
+    }
+
+    @Override
+    public String nextBatchID(String id) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT BatchID FROM RawStock WHERE MaterialID = ? ORDER BY BatchID DESC LIMIT 1;";
+
+        ResultSet result = CrudUtil.execute(sql, id);
+
+        String latestId = null;
+
+        if(result.next()){
+            latestId = result.getString("BatchID");
+        }
+
+        String[] Ids = latestId.split(id);
+
+        for (String a:Ids) {
+            latestId = a;
+        }
+
+        int idNum = Integer.parseInt(latestId);
+
+        latestId = id + (idNum+1);
+
+        return latestId;
     }
 }

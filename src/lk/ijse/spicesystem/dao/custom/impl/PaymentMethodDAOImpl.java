@@ -76,4 +76,11 @@ public class PaymentMethodDAOImpl implements PaymentMethodDAO {
 
         return id;
     }
+
+    @Override
+    public boolean updatePaymentMethodMinus(int cost, String paymentMethod) throws SQLException, ClassNotFoundException {
+        String sql= "UPDATE paymentMethod SET Balance = Balance - ? WHERE PaymentMethod = ?";
+
+        return CrudUtil.execute(sql, cost, paymentMethod);
+    }
 }
