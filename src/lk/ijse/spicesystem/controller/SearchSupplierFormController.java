@@ -4,8 +4,8 @@ import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.spicesystem.model.SupplierModel;
-import lk.ijse.spicesystem.to.Supplier;
+import lk.ijse.spicesystem.modelBefore.SupplierModel;
+import lk.ijse.spicesystem.model.Supplier;
 import lk.ijse.spicesystem.util.Navigation;
 import lk.ijse.spicesystem.util.Routes;
 

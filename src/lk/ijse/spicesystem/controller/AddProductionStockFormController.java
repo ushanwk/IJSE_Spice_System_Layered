@@ -12,8 +12,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import javafx.util.Duration;
 import lk.ijse.spicesystem.db.DBConnection;
-import lk.ijse.spicesystem.model.ProductionStockModel;
-import lk.ijse.spicesystem.to.ProductionStock;
+import lk.ijse.spicesystem.modelBefore.ProductionStockModel;
+import lk.ijse.spicesystem.model.ProductionStock;
 import org.controlsfx.control.Notifications;
 
 import java.sql.SQLException;

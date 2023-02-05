@@ -7,14 +7,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import lk.ijse.spicesystem.model.ProfileModel;
-import lk.ijse.spicesystem.to.Shop;
-import lk.ijse.spicesystem.to.User;
+import lk.ijse.spicesystem.modelBefore.ProfileModel;
+import lk.ijse.spicesystem.model.User;
 import lk.ijse.spicesystem.util.Navigation;
 import lk.ijse.spicesystem.util.Routes;
 import org.controlsfx.control.Notifications;
 
-import javax.jws.soap.SOAPBinding;
 import java.io.IOException;
 import java.sql.SQLException;
 

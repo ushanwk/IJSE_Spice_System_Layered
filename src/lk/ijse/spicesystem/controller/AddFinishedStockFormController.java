@@ -11,10 +11,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.util.Duration;
 import lk.ijse.spicesystem.db.DBConnection;
-import lk.ijse.spicesystem.model.FinishedStockModel;
-import lk.ijse.spicesystem.to.FinishedStock;
-import lk.ijse.spicesystem.util.Navigation;
-import lk.ijse.spicesystem.util.Routes;
+import lk.ijse.spicesystem.modelBefore.FinishedStockModel;
+import lk.ijse.spicesystem.model.FinishedStock;
 import org.controlsfx.control.Notifications;
 
 import java.sql.SQLException;

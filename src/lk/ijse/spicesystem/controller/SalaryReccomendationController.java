@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.spicesystem.db.DBConnection;
-import lk.ijse.spicesystem.model.SalaryRecomendationModel;
+import lk.ijse.spicesystem.modelBefore.SalaryRecomendationModel;
 
 import java.sql.SQLException;
 

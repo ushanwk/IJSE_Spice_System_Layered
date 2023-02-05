@@ -1,7 +1,6 @@
 package lk.ijse.spicesystem.dao;
 
 import javafx.collections.ObservableList;
-import lk.ijse.spicesystem.to.Employee;
 
 import java.sql.SQLException;
 

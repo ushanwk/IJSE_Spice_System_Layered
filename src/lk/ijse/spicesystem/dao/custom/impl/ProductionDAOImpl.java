@@ -4,7 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lk.ijse.spicesystem.dao.CrudUtil;
 import lk.ijse.spicesystem.dao.custom.ProductionDAO;
-import lk.ijse.spicesystem.to.Production;
+import lk.ijse.spicesystem.model.Production;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

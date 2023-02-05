@@ -10,8 +10,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import lk.ijse.spicesystem.db.DBConnection;
-import lk.ijse.spicesystem.model.PlaceOrderModel;
-import lk.ijse.spicesystem.to.Order;
+import lk.ijse.spicesystem.modelBefore.PlaceOrderModel;
+import lk.ijse.spicesystem.model.Order;
 import org.controlsfx.control.Notifications;
 
 import java.sql.SQLException;

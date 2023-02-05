@@ -3,9 +3,8 @@ package lk.ijse.spicesystem.dao.custom.impl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lk.ijse.spicesystem.dao.CrudUtil;
-import lk.ijse.spicesystem.dao.SuperDAO;
 import lk.ijse.spicesystem.dao.custom.SupplierDAO;
-import lk.ijse.spicesystem.to.Supplier;
+import lk.ijse.spicesystem.model.Supplier;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

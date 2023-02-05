@@ -6,8 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.spicesystem.model.ShopModel;
-import lk.ijse.spicesystem.to.Shop;
+import lk.ijse.spicesystem.modelBefore.ShopModel;
+import lk.ijse.spicesystem.model.Shop;
 import lk.ijse.spicesystem.util.Navigation;
 import lk.ijse.spicesystem.util.Routes;
 

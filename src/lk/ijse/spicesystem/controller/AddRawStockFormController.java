@@ -11,9 +11,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import javafx.util.Duration;
-import lk.ijse.spicesystem.model.RawStockModel;
-import lk.ijse.spicesystem.model.SupplierModel;
-import lk.ijse.spicesystem.to.RawStock;
+import lk.ijse.spicesystem.modelBefore.RawStockModel;
+import lk.ijse.spicesystem.modelBefore.SupplierModel;
+import lk.ijse.spicesystem.model.RawStock;
 import org.controlsfx.control.Notifications;
 
 import java.sql.Date;

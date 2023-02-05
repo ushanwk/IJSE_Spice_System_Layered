@@ -3,10 +3,9 @@ package lk.ijse.spicesystem.controller;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.spicesystem.model.SupplierModel;
-import lk.ijse.spicesystem.to.Supplier;
+import lk.ijse.spicesystem.modelBefore.SupplierModel;
+import lk.ijse.spicesystem.model.Supplier;
 import lk.ijse.spicesystem.util.Navigation;
 import lk.ijse.spicesystem.util.Routes;
 

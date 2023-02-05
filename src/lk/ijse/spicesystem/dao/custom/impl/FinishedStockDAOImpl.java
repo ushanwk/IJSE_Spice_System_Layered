@@ -3,7 +3,7 @@ package lk.ijse.spicesystem.dao.custom.impl;
 import javafx.collections.ObservableList;
 import lk.ijse.spicesystem.dao.CrudUtil;
 import lk.ijse.spicesystem.dao.custom.FinishedStockDAO;
-import lk.ijse.spicesystem.to.FinishedStock;
+import lk.ijse.spicesystem.model.FinishedStock;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

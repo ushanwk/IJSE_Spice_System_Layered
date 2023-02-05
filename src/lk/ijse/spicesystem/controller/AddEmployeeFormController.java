@@ -9,14 +9,12 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.util.Duration;
-import lk.ijse.spicesystem.model.EmployeeModel;
-import lk.ijse.spicesystem.to.Employee;
+import lk.ijse.spicesystem.modelBefore.EmployeeModel;
+import lk.ijse.spicesystem.model.Employee;
 import lk.ijse.spicesystem.util.Navigation;
 import lk.ijse.spicesystem.util.Routes;
 import org.controlsfx.control.Notifications;
 
-import javax.print.attribute.standard.MediaSize;
-import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.regex.Matcher;
