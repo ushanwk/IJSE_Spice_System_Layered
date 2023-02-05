@@ -76,4 +76,28 @@ public class ProductionDAOImpl implements ProductionDAO {
 
         return CrudUtil.execute(sql, amount, productionId);
     }
+
+    @Override
+    public ObservableList getProduction(String id) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT ProductionItem From production WHERE MaterialID = ?";
+
+        String mId = String.valueOf(id.charAt(0));
+
+        ResultSet result = CrudUtil.execute(sql, mId);
+
+        ObservableList<String> list = FXCollections.observableArrayList();
+
+        while(result.next()){
+            list.add(result.getString("ProductionItem"));
+        }
+
+        return list;
+    }
+
+    @Override
+    public boolean productionTale(int amount, String productionItem) throws SQLException, ClassNotFoundException {
+        String sql = "UPDATE production SET AmountInStock = AmountInStock + ? WHERE ProductionItem = ?";
+
+        return CrudUtil.execute(sql, amount, productionItem);
+    }
 }

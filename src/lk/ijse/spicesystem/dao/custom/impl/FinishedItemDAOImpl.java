@@ -76,4 +76,24 @@ public class FinishedItemDAOImpl implements FinishedItemDAO {
 
         return CrudUtil.execute(sql, amount, barcodeNo);
     }
+
+    @Override
+    public String getQtyOnHand(String finishedItem) throws SQLException, ClassNotFoundException {
+        String sql = "SELECT AmountInStock FROM finisheditem WHERE FinishedItem = ?";
+
+        ResultSet result = CrudUtil.execute(sql, finishedItem);
+
+        if(result.next()){
+            return result.getString("AmountInStock");
+        }
+
+        return null;
+    }
+
+    @Override
+    public boolean updateFinishedItem(String item, int amount) throws SQLException, ClassNotFoundException {
+        String sql = "UPDATE finisheditem SET AmountInStock = AmountInStock - ? WHERE FinishedItem = ?";
+
+        return CrudUtil.execute(sql, amount, item);
+    }
 }

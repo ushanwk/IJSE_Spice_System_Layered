@@ -12,7 +12,27 @@ import java.sql.SQLException;
 public class ProductionStockDAOImpl implements ProductionStockDAO {
     @Override
     public String nextId() throws SQLException, ClassNotFoundException {
-        return null;
+        String sql = "SELECT ProductionStockID FROM productionStock ORDER BY ProductionStockID DESC LIMIT 1";
+
+        ResultSet result = CrudUtil.execute(sql);
+
+        String latestId = null;
+
+        if(result.next()){
+            latestId = result.getString("ProductionStockID");
+        }
+
+        String[] SUs = latestId.split("PS");
+
+        for (String a:SUs) {
+            latestId = a;
+        }
+
+        int idNum = Integer.parseInt(latestId);
+
+        latestId = "PS" + (idNum+1);
+
+        return latestId;
     }
 
     @Override
@@ -22,7 +42,9 @@ public class ProductionStockDAOImpl implements ProductionStockDAO {
 
     @Override
     public boolean add(ProductionStock productionStock) throws SQLException, ClassNotFoundException {
-        return false;
+        String sql = "INSERT INTO ProductionStock VALUES (?, ?, ?, ?, ?)";
+
+        return CrudUtil.execute(sql, productionStock.getProductionStockID(), productionStock.getAmount(), productionStock.getBatchID(), productionStock.getProductionID(), productionStock.getAmount());
     }
 
     @Override
