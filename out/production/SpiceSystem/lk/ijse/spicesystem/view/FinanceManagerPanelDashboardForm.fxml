@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" prefHeight="1000.0" prefWidth="1700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.spicesystem.controller.FinanceManagerPanelDashboardFormController">
+   <children>
+      <ImageView fitHeight="1000.0" fitWidth="1700.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/FinanceManagerDashboard.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgSalesProfitSelectedRec" fitHeight="60.0" fitWidth="393.0" layoutX="178.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/SelectedRec.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgCostsSelectedRec" fitHeight="60.0" fitWidth="393.0" layoutX="178.0" layoutY="440.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/SelectedRec.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgNetProfitSelectedRec" fitHeight="60.0" fitWidth="393.0" layoutX="178.0" layoutY="514.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/SelectedRec.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="260.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DASHBOARD">
+         <font>
+            <Font name="Helvetica Bold" size="35.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="188.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/Profit%20Logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="188.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/LossLogo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="187.0" layoutY="518.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/NetProfitLogo.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="244.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SALES PROFIT">
+         <font>
+            <Font name="Helvetica Bold" size="30.0" />
+         </font>
+      </Text>
+      <Text layoutX="243.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="COSTS">
+         <font>
+            <Font name="Helvetica Bold" size="30.0" />
+         </font>
+      </Text>
+      <Text layoutX="242.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NET PROFIT">
+         <font>
+            <Font name="Helvetica Bold" size="30.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="imgSalesProfitSelectedBorder" fitHeight="171.0" fitWidth="393.0" layoutX="177.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/CEOPanelDashboardBorderSelected.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgCostsSelectedBorder" fitHeight="171.0" fitWidth="393.0" layoutX="177.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/CEOPanelDashboardBorderSelected.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgNetProfitSelectedBorder" fitHeight="171.0" fitWidth="393.0" layoutX="177.0" layoutY="515.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/CEOPanelDashboardBorderSelected.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="46.0" layoutX="185.0" layoutY="370.0" onMouseClicked="#btnSalesProfitOnMouseClicked" onMouseEntered="#btnSlaesProftOnMouseEntered" onMouseExited="#btnSlaesProftOnMouseExited" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="378.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="46.0" layoutX="185.0" layoutY="444.0" onMouseClicked="#btnCostsOnMouseClicked" onMouseEntered="#btnCostsOnMouseEntered" onMouseExited="#btnCostsOnMouseExited" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="378.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="46.0" layoutX="185.0" layoutY="518.0" onMouseClicked="#btnNetProfitsOnMouseClicked" onMouseEntered="#btnNetProfitOnMouseEntered" onMouseExited="#btnNetProfitOnMouseExited" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="378.0" />
+      <Text layoutX="237.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="237.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Job Role :">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="237.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address :">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="308.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shantha Bandara">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="335.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Panadura">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="339.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Finance Manager">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <JFXButton buttonType="RAISED" layoutX="1512.0" layoutY="917.0" onAction="#btnBackOnACtion" style="-fx-background-color: red;" text="Back" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

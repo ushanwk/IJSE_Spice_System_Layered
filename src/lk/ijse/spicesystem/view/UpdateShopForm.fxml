@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="dashboardPane" prefHeight="620.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.spicesystem.controller.UpdateShopFormController">
+   <children>
+      <ImageView fitHeight="555.0" fitWidth="854.0" layoutX="42.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/UpdateShopPanel.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="136.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CUSTOMER" underline="true">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="imgDotOne" fitHeight="118.0" fitWidth="40.0" layoutX="107.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/ThreeDotsOne.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgDotThree" fitHeight="118.0" fitWidth="40.0" layoutX="106.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/ThreeDotsTwo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgDotTwo" fitHeight="118.0" fitWidth="40.0" layoutX="108.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/ThreeDotsThree.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="142.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Shop">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="142.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Details">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="142.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Updated Successfully">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <JFXComboBox fx:id="cmbShopId" focusColor="#07d5e0" layoutX="378.0" layoutY="81.0" onAction="#cmbShopIdOnAction" onMouseClicked="#cmbShopIdOnMouseClicked" prefHeight="27.0" prefWidth="93.0" promptText="Shop ID" unFocusColor="BLACK" />
+      <JFXTextField fx:id="txtShopName" focusColor="#07d5e0" labelFloat="true" layoutX="399.0" layoutY="204.0" onMouseClicked="#txtShopNameOnMouseClicked" prefHeight="27.0" prefWidth="213.0" promptText="Shop Name" unFocusColor="BLACK" />
+      <Text layoutX="378.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SHOP DETAILS">
+         <font>
+            <Font name="Helvetica Bold" size="18.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="txtShopAddress" focusColor="#07d5e0" labelFloat="true" layoutX="643.0" layoutY="204.0" onMouseClicked="#txtSAddressOnMouseClicked" prefHeight="27.0" prefWidth="178.0" promptText="Address" unFocusColor="BLACK" />
+      <JFXTextField fx:id="txtEmail" focusColor="#07d5e0" labelFloat="true" layoutX="399.0" layoutY="263.0" onMouseClicked="#txtEmailOnMouseClicked" prefHeight="27.0" prefWidth="426.0" promptText="Email" unFocusColor="BLACK" />
+      <JFXTextField fx:id="txtTelephone" focusColor="#07d5e0" labelFloat="true" layoutX="399.0" layoutY="323.0" onMouseClicked="#txtTelephoneOnMouseClicked" prefHeight="27.0" prefWidth="178.0" promptText="Telephone" unFocusColor="BLACK" />
+      <Text layoutX="378.0" layoutY="408.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OWNER DETAILS">
+         <font>
+            <Font name="Helvetica Bold" size="18.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="txtOwnerName" focusColor="#07d5e0" labelFloat="true" layoutX="399.0" layoutY="431.0" onMouseClicked="#txtOwnerNameOnMouseClicked" prefHeight="27.0" prefWidth="213.0" promptText="Owner Name" unFocusColor="BLACK" />
+      <JFXTextField fx:id="txtOwnerTelephone" focusColor="#07d5e0" labelFloat="true" layoutX="643.0" layoutY="432.0" onMouseClicked="#txtOwnerTelephoneOnMouseClicked" prefHeight="27.0" prefWidth="178.0" promptText="Owner Telephone" unFocusColor="BLACK" />
+      <JFXTextField fx:id="txtOwnerNic" focusColor="#07d5e0" labelFloat="true" layoutX="399.0" layoutY="486.0" onMouseClicked="#txtOwnerNicOnMouseClicked" prefHeight="27.0" prefWidth="178.0" promptText="Owner NIC" unFocusColor="BLACK" />
+      <JFXButton buttonType="RAISED" layoutX="766.0" layoutY="526.0" onAction="#btnUpdateOnAction" style="-fx-background-color: #07D5E0;" text="Update" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="707.0" layoutY="526.0" onAction="#btnBackOnAction" style="-fx-background-color: #F506FF;" text="Back" textFill="WHITE" />
+   </children>
+</AnchorPane>

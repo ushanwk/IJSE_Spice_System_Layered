@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="dashboardPane" prefHeight="620.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.spicesystem.controller.SearchSupplierFormController">
+   <children>
+      <ImageView fitHeight="555.0" fitWidth="854.0" layoutX="42.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/SupplierSearchPanel.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="137.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SUPPLIER">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="385.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SUPPLIER DETAILS">
+         <font>
+            <Font name="Helvetica Bold" size="18.0" />
+         </font>
+      </Text>
+      <JFXComboBox fx:id="cmbSupplierId" focusColor="#07d5e0" layoutX="384.0" layoutY="97.0" onAction="#cmbSupplierIdOnAction" prefHeight="27.0" prefWidth="91.0" promptText="Supplier ID" unFocusColor="BLACK" />
+      <Text layoutX="419.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier Name :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Label fx:id="lblSupplierName" layoutX="527.0" layoutY="229.0" prefHeight="19.0" prefWidth="311.0" textFill="#07d5e0">
+         <font>
+            <Font name="Helvetica Bold" size="15.0" />
+         </font>
+      </Label>
+      <Text layoutX="421.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Label fx:id="lblSupplierAddress" layoutX="488.0" layoutY="270.0" prefHeight="19.0" prefWidth="351.0">
+         <font>
+            <Font name="Helvetica Bold" size="15.0" />
+         </font>
+      </Label>
+      <Text layoutX="421.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Label fx:id="lblSupplierEmail" layoutX="471.0" layoutY="311.0" prefHeight="19.0" prefWidth="380.0">
+         <font>
+            <Font name="Helvetica Bold" size="15.0" />
+         </font>
+      </Label>
+      <Text layoutX="420.0" layoutY="373.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Label fx:id="lblSupplierTelephone" layoutX="501.0" layoutY="358.0" prefHeight="19.0" prefWidth="147.0">
+         <font>
+            <Font name="Helvetica Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="746.0" layoutY="507.0" onAction="#btnBackOnAction" style="-fx-background-color: #F506FF;" text="Back" textFill="WHITE" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Costs" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c72f96d9-38c2-435f-af49-97a4a2b29c57">
+    <property name="ireport.zoom" value="1.0"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="687"/>
+    <property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="SpiceSystem"/>
+    <style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+    <style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false"/>
+    <style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+    <style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+    <style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+        <conditionalStyle>
+            <conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+            <style mode="Opaque" backcolor="#F0EFEF"/>
+        </conditionalStyle>
+    </style>
+    <subDataset name="PieChartDataset" uuid="39581794-7f4c-48d6-8f6a-b421776f515c"/>
+    <queryString language="SQL">
+        <![CDATA[SELECT * FROM Finance]]>
+    </queryString>
+    <field name="FinanceID" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="FinanceID"/>
+        <property name="com.jaspersoft.studio.field.label" value="FinanceID"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="finance"/>
+    </field>
+    <field name="IncomeOrCost" class="java.lang.Boolean">
+        <property name="com.jaspersoft.studio.field.name" value="IncomeOrCost"/>
+        <property name="com.jaspersoft.studio.field.label" value="IncomeOrCost"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="finance"/>
+    </field>
+    <field name="PaymentMethodID" class="java.lang.String">
+        <property name="com.jaspersoft.studio.field.name" value="PaymentMethodID"/>
+        <property name="com.jaspersoft.studio.field.label" value="PaymentMethodID"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="finance"/>
+    </field>
+    <field name="Price" class="java.lang.Integer">
+        <property name="com.jaspersoft.studio.field.name" value="Price"/>
+        <property name="com.jaspersoft.studio.field.label" value="Price"/>
+        <property name="com.jaspersoft.studio.field.tree.path" value="finance"/>
+    </field>
+    <background>
+        <band height="802" splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="94" splitType="Stretch">
+            <staticText>
+                <reportElement style="SubTitle" x="336" y="65" width="217" height="29" uuid="7a8ee983-690c-4f4d-9330-42613bd3d628"/>
+                <textElement textAlignment="Right">
+                    <font size="22" isBold="false"/>
+                </textElement>
+                <text><![CDATA[Flower SubTitle]]></text>
+            </staticText>
+            <frame>
+                <reportElement mode="Opaque" x="-20" y="0" width="597" height="65" forecolor="#006699" backcolor="#006699" uuid="29f958b3-9df5-4ee0-905e-9fd33029926f"/>
+                <staticText>
+                    <reportElement style="Title" x="231" y="0" width="346" height="65" uuid="cf1fabd8-9376-4a95-a65d-c762a7404011"/>
+                    <textElement textAlignment="Right">
+                        <font size="54" isBold="false"/>
+                    </textElement>
+                    <text><![CDATA[Flower Title]]></text>
+                </staticText>
+            </frame>
+        </band>
+    </title>
+    <pageHeader>
+        <band splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band height="27" splitType="Stretch">
+            <frame>
+                <reportElement x="227" y="0" width="328" height="20" uuid="793d06e1-d7cc-4d62-ad99-d289a8ce0026"/>
+                <staticText>
+                    <reportElement style="Column header" positionType="Float" x="-225" y="0" width="82" height="20" forecolor="#000000" uuid="24715e18-4302-477f-a6ac-766742f54bff">
+                        <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="84a87b27-43ce-45ba-9b28-90b374c5c1d6"/>
+                    </reportElement>
+                    <textElement>
+                        <font fontName="Arial" isBold="false"/>
+                    </textElement>
+                    <text><![CDATA[FinanceID]]></text>
+                </staticText>
+                <staticText>
+                    <reportElement style="Column header" positionType="Float" x="-120" y="0" width="82" height="20" forecolor="#000000" uuid="69ef9041-601b-49ec-b2ed-3aeebbf721e2">
+                        <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2e9bf0d0-d124-4465-831f-57f04b688bbe"/>
+                    </reportElement>
+                    <textElement>
+                        <font fontName="Arial" isBold="false"/>
+                    </textElement>
+                    <text><![CDATA[IncomeOrCost]]></text>
+                </staticText>
+                <staticText>
+                    <reportElement style="Column header" positionType="Float" x="20" y="0" width="82" height="20" forecolor="#000000" uuid="c37f6487-cd2b-4c93-b078-f39a3bbd609f">
+                        <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="572950f9-5a19-471a-892a-411107f6ec74"/>
+                    </reportElement>
+                    <textElement>
+                        <font fontName="Arial" isBold="false"/>
+                    </textElement>
+                    <text><![CDATA[PaymentMethodID]]></text>
+                </staticText>
+                <staticText>
+                    <reportElement style="Column header" positionType="Float" x="240" y="0" width="82" height="20" forecolor="#000000" uuid="e5d38d3f-bdcf-431f-b789-0d73a1024ad7">
+                        <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ea27fc43-3d2a-417a-a393-40a7a7f97d4c"/>
+                    </reportElement>
+                    <textElement>
+                        <font fontName="Arial" isBold="false"/>
+                    </textElement>
+                    <text><![CDATA[Price]]></text>
+                </staticText>
+            </frame>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="23" splitType="Stretch">
+            <frame>
+                <reportElement x="227" y="0" width="328" height="20" uuid="dec77cf2-1014-4b3e-9934-7f0c65a83bce"/>
+                <textField>
+                    <reportElement style="Detail" positionType="Float" x="-227" y="0" width="82" height="18" uuid="31f555a5-24d1-454f-91cb-c5cb0f471272">
+                        <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="84a87b27-43ce-45ba-9b28-90b374c5c1d6"/>
+                    </reportElement>
+                    <textElement>
+                        <font fontName="Arial" size="14" isBold="false"/>
+                    </textElement>
+                    <textFieldExpression><![CDATA[$F{FinanceID}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Detail" positionType="Float" x="-98" y="0" width="28" height="18" uuid="0e22358e-805c-4034-b73b-bf9932ff6a4f">
+                        <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2e9bf0d0-d124-4465-831f-57f04b688bbe"/>
+                    </reportElement>
+                    <textElement>
+                        <font fontName="Arial" size="14" isBold="false"/>
+                    </textElement>
+                    <textFieldExpression><![CDATA[$F{IncomeOrCost}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Detail" positionType="Float" x="9" y="0" width="82" height="18" uuid="449db81c-d6c5-4931-aba5-1f3cffdda3aa">
+                        <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="572950f9-5a19-471a-892a-411107f6ec74"/>
+                    </reportElement>
+                    <textElement>
+                        <font fontName="Arial" size="14" isBold="false"/>
+                    </textElement>
+                    <textFieldExpression><![CDATA[$F{PaymentMethodID}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Detail" positionType="Float" x="239" y="0" width="82" height="18" uuid="2321a286-e724-4b8a-81fc-5d12b7450b60">
+                        <property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ea27fc43-3d2a-417a-a393-40a7a7f97d4c"/>
+                    </reportElement>
+                    <textElement>
+                        <font fontName="Arial" size="14" isBold="false"/>
+                    </textElement>
+                    <textFieldExpression><![CDATA[$F{Price}]]></textFieldExpression>
+                </textField>
+            </frame>
+        </band>
+    </detail>
+    <columnFooter>
+        <band height="7" splitType="Stretch">
+            <line>
+                <reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="0a05d19c-77ff-48d5-91d6-460d221419e5"/>
+                <graphicElement>
+                    <pen lineWidth="0.5" lineColor="#999999"/>
+                </graphicElement>
+            </line>
+        </band>
+    </columnFooter>
+    <pageFooter>
+        <band height="13" splitType="Stretch">
+            <frame>
+                <reportElement mode="Opaque" x="2" y="0" width="555" height="13" forecolor="#D0B48E" backcolor="#006699" uuid="21b8ec89-3912-4f38-b1d2-846c348d496b"/>
+                <textField evaluationTime="Report">
+                    <reportElement style="Column header" x="513" y="0" width="40" height="13" forecolor="#FFFFFF" uuid="2f1f4647-386f-4ee9-b3b1-779c70fd7960"/>
+                    <textElement verticalAlignment="Middle">
+                        <font size="10" isBold="false"/>
+                    </textElement>
+                    <textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+                </textField>
+                <textField>
+                    <reportElement style="Column header" x="433" y="0" width="80" height="13" forecolor="#FFFFFF" uuid="c50a7647-9d9b-4145-89d7-15adb353fac4"/>
+                    <textElement textAlignment="Right" verticalAlignment="Middle">
+                        <font size="10" isBold="false"/>
+                    </textElement>
+                    <textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+                </textField>
+                <textField pattern="EEEEE dd MMMMM yyyy">
+                    <reportElement style="Column header" x="2" y="0" width="197" height="13" forecolor="#FFFFFF" uuid="2a75ce15-0152-4154-9a45-a23c6a9d3107"/>
+                    <textElement verticalAlignment="Middle">
+                        <font size="10" isBold="false"/>
+                    </textElement>
+                    <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+                </textField>
+            </frame>
+        </band>
+    </pageFooter>
+    <summary>
+        <band splitType="Stretch"/>
+    </summary>
+</jasperReport>

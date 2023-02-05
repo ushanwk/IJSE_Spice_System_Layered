@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="panel" prefHeight="1000.0" prefWidth="1700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.spicesystem.controller.HRPanelDashboardFormContrller">
+   <children>
+      <ImageView fitHeight="1000.0" fitWidth="1700.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/FinanceManagerDashboard.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="270.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DASHBOARD">
+         <font>
+            <Font name="Helvetica Bold" size="30.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="imgEmployeesSelectedRec" fitHeight="91.0" fitWidth="394.0" layoutX="176.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/SelectedRec.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgAttendanceSelectedRec" fitHeight="91.0" fitWidth="394.0" layoutX="176.0" layoutY="439.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/SelectedRec.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgSalaryRecSelectedRec" fitHeight="91.0" fitWidth="394.0" layoutX="176.0" layoutY="514.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/SelectedRec.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="191.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/Employees.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="187.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/AttendenceLogo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="188.0" layoutY="517.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/SalaryRecLogo.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="241.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EMPLOYEES">
+         <font>
+            <Font name="Helvetica Bold" size="25.0" />
+         </font>
+      </Text>
+      <Text layoutX="242.0" layoutY="474.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENDENCE">
+         <font>
+            <Font name="Helvetica Bold" size="25.0" />
+         </font>
+      </Text>
+      <Text layoutX="242.0" layoutY="551.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SALARY RECPMENDATON">
+         <font>
+            <Font name="Helvetica Bold" size="24.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="imgEmployeesSelected" fitHeight="62.0" fitWidth="394.0" layoutX="177.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/CEOPanelDashboardBorderSelected.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgAttendanceSelected" fitHeight="62.0" fitWidth="394.0" layoutX="176.0" layoutY="440.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/CEOPanelDashboardBorderSelected.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgSalaryRecSelected" fitHeight="62.0" fitWidth="394.0" layoutX="176.0" layoutY="515.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/CEOPanelDashboardBorderSelected.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="184.0" layoutY="367.0" onMouseClicked="#btnEmployeeOnMouseClicked" onMouseEntered="#btnEmployeeOnMouseEntered" onMouseExited="#btnEmployeeOnMouseExited" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="380.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="183.0" layoutY="441.0" onMouseClicked="#btnAttendenceOnMouseClicked" onMouseEntered="#btnAttendenceOnMouseEntered" onMouseExited="#btnAttendenceOnMouseExited" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="380.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="183.0" layoutY="516.0" onMouseClicked="#btnSalaryRecOnMouseClicked" onMouseEntered="#btnSalaryRecOnMouseEntered" onMouseExited="#btnSalaryRecOnMouseExited" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="380.0" />
+      <Text layoutX="238.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="237.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address :">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="237.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Job Role :">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="309.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kamal Madushanka">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="334.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Galle">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="343.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HR Manager">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <AnchorPane fx:id="dashboardPane" layoutX="649.0" layoutY="248.0" prefHeight="599.0" prefWidth="914.0" />
+      <JFXButton buttonType="RAISED" layoutX="1517.0" layoutY="900.0" onAction="#btnBackOnAction" style="-fx-background-color: red;" text="Back" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

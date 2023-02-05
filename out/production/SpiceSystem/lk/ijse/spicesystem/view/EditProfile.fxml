@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" prefHeight="1000.0" prefWidth="1700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.spicesystem.controller.EditProfileController">
+   <children>
+      <ImageView fitHeight="1000.0" fitWidth="1700.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/EditProfilePanel.jpg" />
+         </image>
+      </ImageView>
+      <Text layoutX="179.0" layoutY="460.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="184.0" layoutY="530.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="lblUsername" fill="WHITE" layoutX="280.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="200.21728515625">
+         <font>
+            <Font name="Helvetica Bold" size="25.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="281.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1234" wrappingWidth="200.21728515625">
+         <font>
+            <Font name="Helvetica Bold" size="25.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="txtFname" focusColor="#07d5e0" labelFloat="true" layoutX="721.0" layoutY="320.0" prefHeight="40.0" prefWidth="343.0" promptText="First Name" unFocusColor="BLACK">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtLname" focusColor="#07d5e0" labelFloat="true" layoutX="1118.0" layoutY="320.0" prefHeight="40.0" prefWidth="343.0" promptText="Last Name" unFocusColor="BLACK">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtEmail" focusColor="#07d5e0" labelFloat="true" layoutX="724.0" layoutY="421.0" prefHeight="40.0" prefWidth="742.0" promptText="Email" unFocusColor="BLACK">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtTelephone" focusColor="#07d5e0" labelFloat="true" layoutX="724.0" layoutY="539.0" prefHeight="40.0" prefWidth="343.0" promptText="Telephone" unFocusColor="BLACK">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtAddress" focusColor="#07d5e0" labelFloat="true" layoutX="1123.0" layoutY="539.0" prefHeight="40.0" prefWidth="343.0" promptText="Address" unFocusColor="BLACK">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtJobrole" focusColor="#07d5e0" labelFloat="true" layoutX="727.0" layoutY="658.0" prefHeight="40.0" prefWidth="343.0" promptText="JobRole" unFocusColor="BLACK">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton buttonType="RAISED" layoutX="1413.0" layoutY="771.0" onAction="#btnSaveOnAction" style="-fx-background-color: #07d5e0;" text="Save" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="1357.0" layoutY="771.0" onAction="#btnBackOnAction" style="-fx-background-color: #F506FF;" text="Back" textFill="WHITE" />
+   </children>
+</AnchorPane>

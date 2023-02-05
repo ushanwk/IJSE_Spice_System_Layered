@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" prefHeight="570.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.spicesystem.controller.SignUpFormController">
+   <children>
+      <ImageView fitHeight="1000.0" fitWidth="1700.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/LoginSignUpFormBackground.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="570.0" fitWidth="860.0" layoutX="449.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/SignUpForm.jpg" />
+         </image>
+         <effect>
+            <DropShadow height="50.0" radius="24.5" width="50.0" />
+         </effect>
+      </ImageView>
+      <Text layoutX="827.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SignUp">
+         <font>
+            <Font name="Arial Bold" size="30.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="txtEmployeeId" focusColor="#008cf7" labelFloat="true" layoutX="733.0" layoutY="328.0" onAction="#txtEmployeeIdOnAction" prefHeight="35.0" prefWidth="140.0" promptText="Employee ID" unFocusColor="BLACK">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtUserName" focusColor="#008cf7" labelFloat="true" layoutX="885.0" layoutY="328.0" onAction="#txtUsernameOnAction" prefHeight="35.0" prefWidth="140.0" promptText="Username" unFocusColor="BLACK">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txtEmail" focusColor="#008cf7" labelFloat="true" layoutX="734.0" layoutY="469.0" onAction="#txtEmailOnAction" prefHeight="35.0" prefWidth="291.0" promptText="Email" unFocusColor="BLACK">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXPasswordField fx:id="txtPassword" focusColor="#008cf7" labelFloat="true" layoutX="734.0" layoutY="404.0" onAction="#txtPasswordOnAction" prefHeight="27.0" prefWidth="291.0" promptText="Password">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXPasswordField>
+      <JFXTextField fx:id="txtOtp" focusColor="#008cf7" labelFloat="true" layoutX="733.0" layoutY="534.0" onAction="#txtOtpOnAction" prefHeight="35.0" prefWidth="140.0" promptText="OTP" unFocusColor="BLACK">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton buttonType="RAISED" layoutX="917.0" layoutY="538.0" onAction="#btnSendOtpOnAction" prefHeight="27.0" prefWidth="76.0" style="-fx-background-color: #ACADF5; -fx-background-radius: 7;" text="Send OTP" />
+      <Text layoutX="841.0" layoutY="655.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Want to Login" />
+      <Label fx:id="lblLoginBefore" layoutX="858.0" layoutY="660.0" text="LogIn" textFill="#008cf7">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="790.0" layoutY="600.0" onAction="#btnSignUpOnAction" prefHeight="27.0" prefWidth="179.0" style="-fx-background-color: #ACADF5; -fx-background-radius: 7;" text="SignUp" />
+      <Label fx:id="lblLoginAfter" layoutX="858.0" layoutY="660.0" text="LogIn" textFill="#ff00ee" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="11.0" layoutX="858.0" layoutY="664.0" onMouseClicked="#lblLogInOnAction" onMouseEntered="#lblLoginOnMouseEntered" onMouseExited="#lblLoginOnMouseExit" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="36.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Rectangle>
+   </children>
+</AnchorPane>

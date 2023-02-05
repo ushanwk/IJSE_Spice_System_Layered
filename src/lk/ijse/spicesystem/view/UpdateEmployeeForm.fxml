@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="dashboardPane" prefHeight="620.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.spicesystem.controller.UpdateEmployeeFormController">
+   <children>
+      <ImageView fitHeight="555.0" fitWidth="854.0" layoutX="42.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/AddShopBackground.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="146.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee" underline="true">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <JFXComboBox fx:id="cmbEmpId" focusColor="#07d5e0" layoutX="379.0" layoutY="96.0" onAction="#cmbEmpId" prefHeight="27.0" prefWidth="104.0" promptText="Employee ID" unFocusColor="BLACK" />
+      <Text layoutX="379.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EMPLOYEE DETAILS">
+         <font>
+            <Font name="Helvetica Bold" size="18.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="txtFName" focusColor="#07d5e0" layoutX="402.0" layoutY="232.0" prefHeight="27.0" prefWidth="202.0" promptText="First Name" unFocusColor="BLACK" />
+      <JFXTextField fx:id="txtSName" focusColor="#07d5e0" layoutX="631.0" layoutY="232.0" prefHeight="27.0" prefWidth="202.0" promptText="Second Name" unFocusColor="BLACK" />
+      <JFXTextField fx:id="txtEmail" focusColor="#07d5e0" layoutX="402.0" layoutY="292.0" prefHeight="27.0" prefWidth="434.0" promptText="Email" unFocusColor="BLACK" />
+      <JFXTextField fx:id="txtAddress" focusColor="#07d5e0" layoutX="402.0" layoutY="356.0" prefHeight="27.0" prefWidth="202.0" promptText="Address" unFocusColor="BLACK" />
+      <JFXTextField fx:id="txtJobRole" focusColor="#07d5e0" layoutX="402.0" layoutY="417.0" prefHeight="27.0" prefWidth="202.0" promptText="Job Role" unFocusColor="BLACK" />
+      <JFXTextField fx:id="txtSalaryPerDay" focusColor="#07d5e0" layoutX="631.0" layoutY="417.0" prefHeight="27.0" prefWidth="202.0" promptText="Salary Per Day" unFocusColor="BLACK" />
+      <JFXButton buttonType="RAISED" layoutX="778.0" layoutY="504.0" onAction="#btnUpdateOnAction" style="-fx-background-color: #07D5E0;" text="Update" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="724.0" layoutY="504.0" onAction="#btnBackOnAction" style="-fx-background-color: #F506FF;" text="Back" textFill="WHITE" />
+   </children>
+</AnchorPane>

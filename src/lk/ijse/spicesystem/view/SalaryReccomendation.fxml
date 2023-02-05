@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="dashboardPane" prefHeight="620.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.spicesystem.controller.SalaryReccomendationController">
+   <children>
+      <ImageView fitHeight="555.0" fitWidth="854.0" layoutX="42.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/AddShopBackground.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="151.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SALARY">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="371.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salary Payment">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <JFXComboBox fx:id="cmbEmployeeId" focusColor="#07d5e0" layoutX="401.0" layoutY="151.0" onAction="#cmbEmployeeIdOnAction" prefHeight="27.0" prefWidth="129.0" promptText="Employee ID" unFocusColor="BLACK" />
+      <Text layoutX="605.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Label fx:id="lblEmployee" layoutX="682.0" layoutY="160.0" prefHeight="19.0" prefWidth="149.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Text layoutX="402.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salary Per Day :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Label fx:id="lblSalaryPerDay" layoutX="506.0" layoutY="224.0" prefHeight="19.0" prefWidth="135.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtDays" focusColor="#07d5e0" labelFloat="true" layoutX="405.0" layoutY="352.0" prefHeight="27.0" prefWidth="69.0" promptText="Days" unFocusColor="BLACK" />
+      <JFXComboBox fx:id="cmbMonth" focusColor="#07d5e0" layoutX="402.0" layoutY="284.0" prefHeight="27.0" prefWidth="129.0" promptText="Month" unFocusColor="BLACK" />
+      <JFXComboBox fx:id="cmbPaymentMethod" focusColor="#07d5e0" layoutX="605.0" layoutY="352.0" onMouseClicked="#cmbPaymentMethodOnClicked" prefHeight="27.0" prefWidth="167.0" promptText="Payment Methods" unFocusColor="BLACK" />
+      <JFXButton buttonType="RAISED" layoutX="758.0" layoutY="509.0" onAction="#btnsubmitOnAction" style="-fx-background-color: #07d5e0;" text="Submit" textFill="WHITE" />
+      <Text layoutX="402.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Costs :" wrappingWidth="97.36083984375">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Label fx:id="lblCost" layoutX="454.0" layoutY="420.0" prefHeight="17.0" prefWidth="97.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

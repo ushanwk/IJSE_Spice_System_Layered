@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" prefHeight="1000.0" prefWidth="1700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.spicesystem.controller.LoginFormController">
+   <children>
+      <ImageView fitHeight="1000.0" fitWidth="1700.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/LoginSignUpFormBackground.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="570.0" fitWidth="860.0" layoutX="449.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/LoginForm.jpg" />
+         </image>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" height="50.0" radius="24.5" width="50.0" />
+         </effect>
+      </ImageView>
+      <Text layoutX="840.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
+         <font>
+            <Font name="Arial Bold" size="30.0" />
+         </font>
+      </Text>
+      <JFXTextField fx:id="txtUsername" focusColor="#008cf7" labelFloat="true" layoutX="749.0" layoutY="363.0" onAction="#txtUsernameOnAction" onKeyReleased="#txtUsernameOnKeyReleased" onMouseClicked="#txtUsernameOnMouseClicked" prefHeight="27.0" prefWidth="264.0" promptText="Username" unFocusColor="BLACK">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXTextField>
+      <JFXPasswordField fx:id="txtPassword" focusColor="#008cf7" labelFloat="true" layoutX="750.0" layoutY="445.0" onAction="#txtPasswordOnAction" onKeyReleased="#txtPasswordOnKeyRelesed" onMouseClicked="#txtPasswordOnMouseClicked" prefHeight="27.0" prefWidth="264.0" promptText="Password" unFocusColor="BLACK">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXPasswordField>
+      <JFXButton buttonType="RAISED" layoutX="792.0" layoutY="525.0" onAction="#btnLoginOnAction" prefHeight="27.0" prefWidth="181.0" ripplerFill="WHITE" style="-fx-background-color: #ACADF5; -fx-background-radius: 7;" text="Login" />
+      <Text fill="#545454" layoutX="839.0" layoutY="606.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Or Signup using" />
+      <Label fx:id="txtSignUp" layoutX="854.0" layoutY="613.0" text="SIGN UP" textFill="#008cf7">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="txtSignUpAfter" layoutX="854.0" layoutY="613.0" text="SIGN UP" textFill="#f500a8" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="15.0" layoutX="855.0" layoutY="617.0" onMouseClicked="#lblSignUpOnClicked" onMouseEntered="#lblSignUpOnMouseEntered" onMouseExited="#lblSignUpOnMouseExited" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="52.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Rectangle>
+      <Group fx:id="imgErrorMessageUsername" layoutX="837.0" layoutY="406.0">
+         <children>
+            <ImageView fitHeight="36.0" fitWidth="181.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asset/ErrorMessageLoginForm.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="19.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username can't be Empty" />
+         </children>
+      </Group>
+      <Group fx:id="imgErrorMessagePassword" layoutX="834.0" layoutY="484.0">
+         <children>
+            <ImageView fitHeight="36.0" fitWidth="181.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asset/ErrorMessageLoginForm.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="20.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password can't be Empty" />
+         </children>
+      </Group>
+      <Group fx:id="imgErrorMessageUsernameWrong" layoutX="837.0" layoutY="405.0">
+         <children>
+            <ImageView fitHeight="36.0" fitWidth="181.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asset/ErrorMessageLoginForm.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="10.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Special Characters not allowed" />
+         </children>
+      </Group>
+      <Text fx:id="txtInvalid" fill="#de4b72" layoutX="800.0" layoutY="581.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Invalid Username or Password" />
+   </children>
+</AnchorPane>

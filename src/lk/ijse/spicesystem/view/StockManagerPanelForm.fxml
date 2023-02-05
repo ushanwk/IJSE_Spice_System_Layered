@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" prefHeight="1000.0" prefWidth="1700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.spicesystem.controller.StockManagerPanelFormController">
+   <children>
+      <ImageView fitHeight="1000.0" fitWidth="1700.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/CEOPanel.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="99.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back">
+         <font>
+            <Font name="Helvetica" size="40.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="95.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RMW / PRODUCTION MANAGER PANEL">
+         <font>
+            <Font name="Helvetica Bold" size="35.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="120.0" fitWidth="557.0" layoutX="884.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/CEORec.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="90.0" fitWidth="87.0" layoutX="899.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/CEOLogo.png" />
+         </image>
+      </ImageView>
+      <JFXButton buttonType="RAISED" layoutX="1437.0" layoutY="104.0" onAction="#btnSignOutOnAction" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: red; -fx-background-radius: 15;" text="Signout" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="1436.0" layoutY="153.0" onAction="#btnEditProfileOnAction" prefHeight="30.0" prefWidth="125.0" style="-fx-background-color: white; -fx-background-radius: 15;" text="Edit Profile">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <Text layoutX="997.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name  -">
+         <font>
+            <Font name="Helvetica" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="997.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Job Role -">
+         <font>
+            <Font name="Helvetica" size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1076.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Madushani Gamage">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1094.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RMW / PRODUCTION MANAGER">
+         <font>
+            <Font name="Helvetica Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="714.0" layoutY="909.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MacLook Technologies - All Right Reserved 2022">
+         <font>
+            <Font name="Helvetica" size="15.0" />
+         </font>
+      </Text>
+      <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="20.0" layoutX="200.0" layoutY="368.0" onAction="#btnRawOnAction" prefHeight="80.0" prefWidth="340.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: #99BDF3;" stylesheets="@../css/style.css" text="RAW STORES">
+         <graphic>
+            <ImageView fitHeight="71.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asset/RawStockLogo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Helvetica Bold" size="30.0" />
+         </font>
+      </JFXButton>
+      <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="20.0" layoutX="600.0" layoutY="368.0" onAction="#btnProductionOnActon" prefHeight="83.0" prefWidth="480.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: #C6B8F8;" stylesheets="@../css/style.css" text="PRODUCTION STORES">
+         <graphic>
+            <ImageView fitHeight="61.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asset/FinishedStockLogo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Helvetica Bold" size="30.0" />
+         </font>
+      </JFXButton>
+      <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="20.0" layoutX="1142.0" layoutY="367.0" onAction="#btnFinishedOnAction" prefHeight="80.0" prefWidth="410.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: #D0A2FA;" stylesheets="@../css/style.css" text="FINISHED STORES">
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asset/BatchStockLogo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Helvetica Bold" size="30.0" />
+         </font>
+      </JFXButton>
+      <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="20.0" layoutX="450.0" layoutY="500.0" onAction="#btnSuppliersOnAction" prefHeight="80.0" prefWidth="294.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: B2A8F6;" stylesheets="@../css/style.css" text="SUPPLIERS">
+         <graphic>
+            <ImageView fitHeight="51.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asset/Supplier.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Helvetica Bold" size="30.0" />
+         </font>
+      </JFXButton>
+      <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" graphicTextGap="20.0" layoutX="950.0" layoutY="500.0" onAction="#btnBatchesOnAction" prefHeight="80.0" prefWidth="278.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-background-color: BBA0F7;" stylesheets="@../css/style.css" text="BATCHES">
+         <graphic>
+            <ImageView fitHeight="71.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../asset/BatchLogo.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Helvetica Bold" size="30.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="lblDay" contentDisplay="CENTER" layoutX="869.0" layoutY="692.0" prefHeight="178.0" prefWidth="197.0" text="18" textFill="WHITE">
+         <font>
+            <Font name="Helvetica Bold" size="150.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblYearMonth" contentDisplay="CENTER" layoutX="725.0" layoutY="762.0" prefHeight="42.0" prefWidth="157.0" text="2022 - 08" textFill="WHITE">
+         <font>
+            <Font name="Helvetica Bold" size="34.0" />
+         </font>
+      </Label>
+      <Text layoutX="997.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address -">
+         <font>
+            <Font name="Helvetica" size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1089.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matara">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

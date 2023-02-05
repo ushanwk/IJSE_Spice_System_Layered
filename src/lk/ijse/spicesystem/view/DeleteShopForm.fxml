@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="dashboardPane" prefHeight="620.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.spicesystem.controller.DeleteShopFormController">
+   <children>
+      <ImageView fitHeight="555.0" fitWidth="854.0" layoutX="42.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/SearchCustomerPanel.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="133.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CUSTOMER" underline="true">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <JFXComboBox fx:id="cmbShopId" focusColor="#07d5e0" layoutX="392.0" layoutY="91.0" onAction="#cmbShopIdOnAction" onMouseClicked="#cmbShopIdOnMouseClick" prefHeight="27.0" prefWidth="87.0" promptText="Shop ID" unFocusColor="BLACK" />
+      <Text fill="WHITE" layoutX="153.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Shop ID">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="153.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search Complete">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="392.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SHOP DETAILS">
+         <font>
+            <Font name="Helvetica Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="416.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shop Name :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="417.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="416.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="416.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telephone :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="392.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OWNER DETAILS">
+         <font>
+            <Font name="Helvetica Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="416.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner Name :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="416.0" layoutY="466.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner Telephone :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text layoutX="416.0" layoutY="504.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Owner NIC :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Label fx:id="lblShopName" layoutX="504.0" layoutY="194.0" prefHeight="19.0" prefWidth="237.0" textFill="#07d5e0">
+         <font>
+            <Font name="Helvetica Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblAddress" layoutX="483.0" layoutY="231.0" prefHeight="19.0" prefWidth="244.0">
+         <font>
+            <Font name="Helvetica Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblEmail" layoutX="461.0" layoutY="269.0" prefHeight="19.0" prefWidth="368.0">
+         <font>
+            <Font name="Helvetica Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTelephone" layoutX="494.0" layoutY="309.0" prefHeight="19.0" prefWidth="203.0">
+         <font>
+            <Font name="Helvetica Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOwnerName" layoutX="513.0" layoutY="412.0" prefHeight="19.0" prefWidth="342.0">
+         <font>
+            <Font name="Helvetica Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOwnerTelephones" layoutX="541.0" layoutY="451.0" prefHeight="19.0" prefWidth="273.0">
+         <font>
+            <Font name="Helvetica Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOwnerNic" layoutX="496.0" layoutY="489.0" prefHeight="19.0" prefWidth="195.0">
+         <font>
+            <Font name="Helvetica Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="741.0" layoutY="527.0" onAction="#btnBackOnAction" style="-fx-background-color: #F506FF;" text="Back" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="798.0" layoutY="527.0" onAction="#btnDeleteOnAction" style="-fx-background-color: red;" text="Delete" textFill="WHITE" />
+      <ImageView fx:id="imgDotOne" fitHeight="107.0" fitWidth="32.0" layoutX="121.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/ThreeDotsOne.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgDotTwo" fitHeight="107.0" fitWidth="32.0" layoutX="120.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/ThreeDotsTwo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgDotThree" fitHeight="107.0" fitWidth="32.0" layoutX="121.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/ThreeDotsThree.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="153.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delete Successfull">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

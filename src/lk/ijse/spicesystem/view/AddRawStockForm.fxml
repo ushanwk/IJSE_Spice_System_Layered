@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="620.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.spicesystem.controller.AddRawStockFormController">
+   <children>
+      <ImageView fitHeight="555.0" fitWidth="854.0" layoutX="42.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/AddRaswStock.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="121.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RAW STORES" underline="true">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <JFXComboBox fx:id="cmbRawItem" focusColor="#07d5e0" layoutX="414.0" layoutY="178.0" onAction="#cmbRawItemOnAction" prefHeight="27.0" prefWidth="123.0" promptText="Raw Item" unFocusColor="BLACK" />
+      <Text layoutX="414.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Batch ID :">
+         <font>
+            <Font name="Helvetica" size="15.0" />
+         </font>
+      </Text>
+      <Label fx:id="lblBatchId" layoutX="491.0" layoutY="248.0" prefHeight="17.0" prefWidth="136.0" textFill="#07d5e0">
+         <font>
+            <Font name="Helvetica Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="cmbSupplierID" focusColor="#07d5e0" layoutX="414.0" layoutY="314.0" onAction="#cmbSupplierIDOnAction" prefHeight="27.0" prefWidth="93.0" promptText="Supplier ID" unFocusColor="BLACK" />
+      <Text layoutX="573.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier Name :">
+         <font>
+            <Font name="Helvetica" size="15.0" />
+         </font>
+      </Text>
+      <Label fx:id="lblSupplierName" layoutX="690.0" layoutY="319.0" prefHeight="19.0" prefWidth="172.0">
+         <font>
+            <Font name="Helvetica Bold" size="15.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtAmount" focusColor="#07d5e0" labelFloat="true" layoutX="417.0" layoutY="459.0" onKeyReleased="#txtAmountOnKeyReleased" promptText="Amount" unFocusColor="BLACK" />
+      <Text layoutX="380.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RAW STORES DETAILS">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <JFXButton buttonType="RAISED" layoutX="780.0" layoutY="520.0" onAction="#btnSubmitOnAction" style="-fx-background-color: #07D5E0;" text="Submit" textFill="WHITE" />
+      <Text layoutX="673.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date :">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Label fx:id="lblDate" layoutX="716.0" layoutY="181.0" prefHeight="19.0" prefWidth="93.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtCost" focusColor="#07d5e0" labelFloat="true" layoutX="635.0" layoutY="394.0" onKeyReleased="#txtCostOnKeyReleased" promptText="Cost" unFocusColor="BLACK" />
+      <JFXComboBox fx:id="cmbPaymentMethod" focusColor="#07d5e0" layoutX="414.0" layoutY="394.0" onAction="#cmbPaymentMethodOnAction" prefHeight="27.0" prefWidth="123.0" promptText="Payment Method" unFocusColor="BLACK" />
+   </children>
+</AnchorPane>

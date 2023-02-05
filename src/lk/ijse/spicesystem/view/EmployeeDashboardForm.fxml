@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="dashboardPane" prefHeight="620.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.spicesystem.controller.EmployeeDashboardFormController">
+   <children>
+      <ImageView fitHeight="555.0" fitWidth="854.0" layoutX="42.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/CustomerDashboardPanel.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="121.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME BACK CUSTOMER DASHBOARD">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Text>
+      <JFXButton buttonType="RAISED" layoutX="163.0" layoutY="286.0" onAction="#btnAddCustomerOnAction" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #07D5E0;" text="Add Employee" textFill="WHITE">
+         <font>
+            <Font name="Helvetica Bold" size="13.0" />
+         </font></JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="587.0" layoutY="244.0" onAction="#btnSearchCustomerOnAction" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: #07D5E0;" text="Search Employee" textFill="WHITE">
+         <font>
+            <Font name="Helvetica Bold" size="13.0" />
+         </font></JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="648.0" layoutY="465.0" onAction="#btnUpdateCustomerOnAction" prefHeight="30.0" prefWidth="136.0" style="-fx-background-color: #07D5E0;" text="Update Employee" textFill="WHITE">
+         <font>
+            <Font name="Helvetica Bold" size="13.0" />
+         </font></JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="391.0" layoutY="465.0" onAction="#btnDeleteCustomerOnAction" prefHeight="30.0" prefWidth="127.0" style="-fx-background-color: #07D5E0;" text="Delete Employee" textFill="WHITE">
+         <font>
+            <Font name="Helvetica Bold" size="13.0" />
+         </font></JFXButton>
+      <Text layoutX="586.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search all and Delete Unwanted">
+         <font>
+            <Font size="15.0" />
+         </font></Text>
+      <Text layoutX="587.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customers">
+         <font>
+            <Font size="15.0" />
+         </font></Text>
+   </children>
+</AnchorPane>

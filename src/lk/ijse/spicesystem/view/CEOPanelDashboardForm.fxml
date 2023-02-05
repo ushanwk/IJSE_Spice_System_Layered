@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" prefHeight="1000.0" prefWidth="1700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.spicesystem.controller.CEOPanelDashboardFormController">
+   <children>
+      <ImageView fitHeight="1000.0" fitWidth="1700.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/CEOPanelDashboard.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgFinanceSelectedLogo" fitHeight="67.0" fitWidth="403.0" layoutX="171.0" layoutY="365.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/SelectedRec.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgStoresSelectedLogo" fitHeight="62.0" fitWidth="642.0" layoutX="172.0" layoutY="439.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/SelectedRec.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgSupplieresSelectedLogo" fitHeight="67.0" fitWidth="403.0" layoutX="173.0" layoutY="515.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/SelectedRec.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgHRSelectedLogo" fitHeight="67.0" fitWidth="403.0" layoutX="172.0" layoutY="588.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/SelectedRec.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgUsersSelectedLogo" fitHeight="67.0" fitWidth="403.0" layoutX="171.0" layoutY="664.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/SelectedRec.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="264.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DASHBOAD">
+         <font>
+            <Font name="Helvetica Bold" size="35.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="ImgSelectedSuppliers" fitHeight="63.0" fitWidth="396.0" layoutX="175.0" layoutY="516.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/CEOPanelDashboardBorderSelected.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="191.0" layoutY="521.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/Supplier.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="191.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/Finance.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="191.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/Stock.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="191.0" layoutY="596.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/Employees.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="191.0" layoutY="673.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/User.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="241.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FINANCE">
+         <font>
+            <Font name="Helvetica Bold" size="32.0" />
+         </font>
+      </Text>
+      <Text layoutX="241.0" layoutY="479.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STORES">
+         <font>
+            <Font name="Helvetica Bold" size="32.0" />
+         </font>
+      </Text>
+      <Text layoutX="241.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SUPPLIERS">
+         <font>
+            <Font name="Helvetica Bold" size="32.0" />
+         </font>
+      </Text>
+      <Text layoutX="241.0" layoutY="628.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HUMAN RESOURCES">
+         <font>
+            <Font name="Helvetica Bold" size="30.0" />
+         </font>
+      </Text>
+      <Text layoutX="241.0" layoutY="704.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USERS">
+         <font>
+            <Font name="Helvetica Bold" size="30.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="ImgSelectedHR" fitHeight="61.0" fitWidth="396.0" layoutX="175.0" layoutY="589.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/CEOPanelDashboardBorderSelected.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ImgSelectedFinance" fitHeight="63.0" fitWidth="396.0" layoutX="175.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/CEOPanelDashboardBorderSelected.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ImgSelectedStores" fitHeight="63.0" fitWidth="396.0" layoutX="175.0" layoutY="440.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/CEOPanelDashboardBorderSelected.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ImgSelectedUsers" fitHeight="63.0" fitWidth="396.0" layoutX="175.0" layoutY="665.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../asset/CEOPanelDashboardBorderSelected.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="49.0" layoutX="183.0" layoutY="368.0" onMouseClicked="#btnFinanceOnMouseClicked" onMouseEntered="#btnFinanceOnMouseEntered" onMouseExited="#btnFinanceOnMouseExited" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="382.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="49.0" layoutX="183.0" layoutY="442.0" onMouseClicked="#btnStoresOnMouseClicked" onMouseEntered="#btnStoresOnMouseEntered" onMouseExited="#btnStoresOnMouseExited" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="382.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="49.0" layoutX="183.0" layoutY="518.0" onMouseClicked="#btnSuppliersOnMouseClicked" onMouseEntered="#btnSuppliersOnMouseEntered" onMouseExited="#btnSuppliersOnMouseExited" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="382.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="49.0" layoutX="182.0" layoutY="592.0" onMouseClicked="#btnHROnMouseClicked" onMouseEntered="#btnHROnMouseEntered" onMouseExited="#btnHROnMouseExited" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="382.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="49.0" layoutX="182.0" layoutY="667.0" onMouseClicked="#btnUsersOnMouseClicked" onMouseEntered="#btnUsersOnMouseEntered" onMouseExited="#btnUsersOnMouseExited" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="382.0" />
+      <Text layoutX="240.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Job Role :">
+         <font>
+            <Font name="Helvetica Neue Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="238.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name :">
+         <font>
+            <Font name="Helvetica Neue Bold" size="20.0" />
+         </font>
+      </Text>
+      <Label layoutX="311.0" layoutY="121.0" text="Ushan Kaushalya" textFill="WHITE">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="340.0" layoutY="176.0" text="CEO" textFill="WHITE">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Label>
+      <Text layoutX="238.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address :">
+         <font>
+            <Font name="Helvetica Neue Bold" size="20.0" />
+         </font>
+      </Text>
+      <Label layoutX="332.0" layoutY="149.0" text="Matara" textFill="WHITE">
+         <font>
+            <Font name="Helvetica Bold" size="20.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="1503.0" layoutY="895.0" onAction="#btnBacOnAction" style="-fx-background-color: red; -fx-background-radius: 10;" text="Back" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
