@@ -51,7 +51,9 @@ public class FinishedStockDAOImpl implements FinishedStockDAO {
 
     @Override
     public boolean update(FinishedStock finishedStock) throws SQLException, ClassNotFoundException {
-        return false;
+        String sql = "INSERT INTO finishedStock VALUES (?, ?, ?, ?, ?)";
+
+        return CrudUtil.execute(sql, finishedStock.getFinishedStockId(), finishedStock.getBarcodeNo(), finishedStock.getAmount(), finishedStock.getProductionStockId(), finishedStock.getQtyOnHand());
     }
 
     @Override

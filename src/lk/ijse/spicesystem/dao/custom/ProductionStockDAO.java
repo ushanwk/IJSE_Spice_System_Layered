@@ -9,4 +9,5 @@ import java.sql.SQLException;
 public interface ProductionStockDAO extends CrudDAO<ProductionStock> {
     public ObservableList getProductionStockId(String productionId) throws SQLException, ClassNotFoundException;
     public int getQtyOnHand(String productionStockId) throws SQLException, ClassNotFoundException;
+    public boolean updateProductionStockTable(String productionStockId, int amount) throws SQLException, ClassNotFoundException;
 }

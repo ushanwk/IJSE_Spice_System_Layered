@@ -67,4 +67,11 @@ public class ProductionStockDAOImpl implements ProductionStockDAO {
 
         return 0;
     }
+
+    @Override
+    public boolean updateProductionStockTable(String productionStockId, int amount) throws SQLException, ClassNotFoundException {
+        String sql = "UPDATE productionStock SET QtyOnHand = QtyOnHand - ? WHERE ProductionStockID = ?";
+
+        return CrudUtil.execute(sql, amount, productionStockId);
+    }
 }
