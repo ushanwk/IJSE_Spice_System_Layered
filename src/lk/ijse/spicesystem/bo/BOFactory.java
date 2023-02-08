@@ -17,7 +17,7 @@ public class BOFactory {
         EMPLOYEE, FINANCE, FINISHEDITEM, FINISHEDSTOCK, MATERIAL, PAYMENTMETHOD, PLACEORDER, PRODUCTION, PRODUCTIONSTOCK, RAWSTOCK, SHOP, SUPPLIER, USER
     }
 
-    public SuperBO getDAO(lk.ijse.spicesystem.dao.DAOFactory.DAOTypes types){
+    public SuperBO getBO(BOTypes types){
         switch (types) {
             case EMPLOYEE:
                 return new EmployeeBOImpl();

@@ -11,9 +11,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import javafx.util.Duration;
+import lk.ijse.spicesystem.bo.BOFactory;
+import lk.ijse.spicesystem.bo.custom.FinanceBO;
+import lk.ijse.spicesystem.bo.custom.MaterialBO;
+import lk.ijse.spicesystem.bo.custom.PaymentMethodBO;
+import lk.ijse.spicesystem.bo.custom.RawStockBO;
+import lk.ijse.spicesystem.dao.DAOFactory;
+import lk.ijse.spicesystem.dto.RawStockDTO;
 import lk.ijse.spicesystem.modelBefore.RawStockModel;
 import lk.ijse.spicesystem.modelBefore.SupplierModel;
-import lk.ijse.spicesystem.entity.RawStock;
 import org.controlsfx.control.Notifications;
 
 import java.sql.Date;
@@ -82,17 +88,22 @@ public class AddRawStockFormController {
 
     }
 
+    RawStockBO rawStockBO = (RawStockBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.RAWSTOCK);
+    MaterialBO materialBO = (MaterialBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.MATERIAL);
+    PaymentMethodBO paymentMethodBO = (PaymentMethodBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENTMETHOD);
+    FinanceBO financeBO = (FinanceBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.FINANCE);
+
     public void btnSubmitOnAction(ActionEvent actionEvent) {
 
         String materialId = String.valueOf(lblBatchId.getText().charAt(0));
-        RawStock rawStock = new RawStock(lblBatchId.getText(), materialId, Integer.valueOf(txtAmount.getText()), String.valueOf(cmbSupplierID.getValue()), Date.valueOf(lblDate.getText()));
+        RawStockDTO rawStockDTO = new RawStockDTO(lblBatchId.getText(), materialId, Integer.valueOf(txtAmount.getText()), String.valueOf(cmbSupplierID.getValue()), Date.valueOf(lblDate.getText()));
 
         try {
 
-            boolean isAdded = RawStockModel.updateRawStock(rawStock);
-            boolean isUpdated = RawStockModel.updateMaterial(Integer.valueOf(txtAmount.getText()), materialId);
-            boolean isUpdatedCost = RawStockModel.updatePaymentMethod(Integer.valueOf(txtCost.getText()), String.valueOf(cmbPaymentMethod.getValue()));
-            boolean isUpdateFinance = RawStockModel.updateFinance(RawStockModel.getPaymentId(String.valueOf(cmbPaymentMethod.getValue())), Integer.valueOf(txtCost.getText()));
+            boolean isAdded = rawStockBO.add(rawStockDTO);
+            boolean isUpdated = materialBO.updateMaterial(Integer.valueOf(txtAmount.getText()), materialId);
+            boolean isUpdatedCost = paymentMethodBO.updatePaymentMethodMinus(Integer.valueOf(txtCost.getText()), String.valueOf(cmbPaymentMethod.getValue()));
+            boolean isUpdateFinance = financeBO.updateFinance(RawStockModel.getPaymentId(String.valueOf(cmbPaymentMethod.getValue())), Integer.valueOf(txtCost.getText()));
 
             if(isAdded && isUpdated && isUpdatedCost && isUpdateFinance){
 

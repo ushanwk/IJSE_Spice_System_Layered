@@ -6,6 +6,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.spicesystem.bo.BOFactory;
+import lk.ijse.spicesystem.bo.custom.ShopBO;
+import lk.ijse.spicesystem.dto.ShopDTO;
 import lk.ijse.spicesystem.modelBefore.ShopModel;
 import lk.ijse.spicesystem.entity.Shop;
 import lk.ijse.spicesystem.util.Navigation;
@@ -28,6 +31,7 @@ public class DeleteShopFormController {
     public ImageView imgDotOne;
     public ImageView imgDotTwo;
     public ImageView imgDotThree;
+    ShopBO shopBO = (ShopBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SHOP);
 
     public void initialize(){
         imgDotOne.setVisible(true);
@@ -51,7 +55,7 @@ public class DeleteShopFormController {
         String id = String.valueOf(cmbShopId.getValue());
 
         try {
-            Shop shop = ShopModel.searchShop(id);
+            ShopDTO shop = shopBO.search(id);
 
             lblShopName.setText(shop.getShopName());
             lblAddress.setText(shop.getAddress());
@@ -78,7 +82,7 @@ public class DeleteShopFormController {
         imgDotThree.setVisible(true);
 
         try {
-            boolean isDeleted = ShopModel.deleteShop(String.valueOf(cmbShopId.getValue()));
+            boolean isDeleted = shopBO.delete(String.valueOf(cmbShopId.getValue()));
 
             if(isDeleted){
                 System.out.println("Done");

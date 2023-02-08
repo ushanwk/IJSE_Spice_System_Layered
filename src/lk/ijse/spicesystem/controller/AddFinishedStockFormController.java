@@ -10,9 +10,15 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.util.Duration;
+import lk.ijse.spicesystem.bo.BOFactory;
+import lk.ijse.spicesystem.bo.custom.FinishedItemBO;
+import lk.ijse.spicesystem.bo.custom.FinishedStockBO;
+import lk.ijse.spicesystem.bo.custom.ProductionBO;
+import lk.ijse.spicesystem.bo.custom.ProductionStockBO;
+import lk.ijse.spicesystem.dao.DAOFactory;
 import lk.ijse.spicesystem.db.DBConnection;
+import lk.ijse.spicesystem.dto.FinishedStockDTO;
 import lk.ijse.spicesystem.modelBefore.FinishedStockModel;
-import lk.ijse.spicesystem.entity.FinishedStock;
 import org.controlsfx.control.Notifications;
 
 import java.sql.SQLException;
@@ -31,6 +37,11 @@ public class AddFinishedStockFormController {
     public JFXTextField txtAmount;
     public AnchorPane dashboardPane;
 
+    FinishedStockBO finishedStockBO = (FinishedStockBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.FINISHEDSTOCK);
+    ProductionBO productionBO = (ProductionBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PRODUCTION);
+    ProductionStockBO productionStockBO = (ProductionStockBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PRODUCTIONSTOCK);
+    FinishedItemBO finishedItemBO = (FinishedItemBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.FINISHEDITEM);
+
     public void initialize(){
 
         txtAmount.clear();
@@ -41,8 +52,8 @@ public class AddFinishedStockFormController {
         lblProductionId.setText("");
 
         try {
-            lblFinishedStockId.setText(FinishedStockModel.nextFinishedStockId());
-            cmbProductionItem.setItems(FinishedStockModel.getProductionItem());
+            lblFinishedStockId.setText(finishedStockBO.nextId());
+            cmbProductionItem.setItems(productionBO.getProductionItem());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -52,8 +63,8 @@ public class AddFinishedStockFormController {
     public void cmbProductionItemOnAction(ActionEvent actionEvent) {
 
         try {
-            lblProductionId.setText(FinishedStockModel.getProductionId(String.valueOf(cmbProductionItem.getValue())));
-            cmbProductionStockId.setItems(FinishedStockModel.getProductionStockId(lblProductionId.getText()));
+            lblProductionId.setText(productionBO.getProductionId(String.valueOf(cmbProductionItem.getValue())));
+            cmbProductionStockId.setItems(productionStockBO.getProductionStockId(lblProductionId.getText()));
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -64,7 +75,7 @@ public class AddFinishedStockFormController {
 
         try {
             lblQtyOnHand.setText(String.valueOf(FinishedStockModel.getQtyOnHand(String.valueOf(cmbProductionStockId.getValue()))));
-            cmbFinishedItem.setItems(FinishedStockModel.getFinishedItem(String.valueOf(cmbProductionItem.getValue())));
+            cmbFinishedItem.setItems(finishedItemBO.getFinishedItem(String.valueOf(cmbProductionItem.getValue())));
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -74,7 +85,7 @@ public class AddFinishedStockFormController {
     public void cmbFinishedItemOnAction(ActionEvent actionEvent) {
 
         try {
-            lblBarcode.setText(FinishedStockModel.getBarcode(String.valueOf(cmbFinishedItem.getValue())));
+            lblBarcode.setText(finishedItemBO.getBarcode(String.valueOf(cmbFinishedItem.getValue())));
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -83,26 +94,26 @@ public class AddFinishedStockFormController {
 
     public void btnSubmitOnAction(ActionEvent actionEvent) {
 
-        FinishedStock finishedStock = new FinishedStock(lblFinishedStockId.getText(), lblBarcode.getText(), Integer.valueOf(txtAmount.getText()), String.valueOf(cmbProductionStockId.getValue()), Integer.valueOf(txtAmount.getText()));
+        FinishedStockDTO finishedStockDTO = new FinishedStockDTO(lblFinishedStockId.getText(), lblBarcode.getText(), Integer.valueOf(txtAmount.getText()), String.valueOf(cmbProductionStockId.getValue()), Integer.valueOf(txtAmount.getText()));
 
 
         try {
 
             DBConnection.getInstance().getConnection().setAutoCommit(false);
 
-            boolean isUpdateProduction = FinishedStockModel.updateProductionTable(lblProductionId.getText(), Integer.valueOf(txtAmount.getText()));
+            boolean isUpdateProduction = productionBO.updateProductionTable(lblProductionId.getText(), Integer.valueOf(txtAmount.getText()));
 
             if(isUpdateProduction){
 
-                boolean isUpdateProductionStock = FinishedStockModel.updateProductionStockTable(String.valueOf(cmbProductionStockId.getValue()), Integer.valueOf(txtAmount.getText()));
+                boolean isUpdateProductionStock = productionStockBO.updateProductionStockTable(String.valueOf(cmbProductionStockId.getValue()), Integer.valueOf(txtAmount.getText()));
 
                 if(isUpdateProductionStock){
 
-                    boolean isUpdateFinishedItem = FinishedStockModel.updateFinishedItemTable(lblBarcode.getText(), Integer.valueOf(txtAmount.getText()));
+                    boolean isUpdateFinishedItem = finishedItemBO.updateFinishedItemTable(lblBarcode.getText(), Integer.valueOf(txtAmount.getText()));
 
                     if(isUpdateFinishedItem){
 
-                        boolean isUpdateFinishedStock = FinishedStockModel.updateFinishedStock(finishedStock);
+                        boolean isUpdateFinishedStock = finishedStockBO.update(finishedStockDTO);
 
                         if(isUpdateFinishedStock){
 

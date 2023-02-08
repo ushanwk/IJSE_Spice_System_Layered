@@ -11,11 +11,9 @@ import javafx.scene.paint.Paint;
 import javafx.util.Duration;
 import lk.ijse.spicesystem.bo.BOFactory;
 import lk.ijse.spicesystem.bo.custom.EmployeeBO;
-import lk.ijse.spicesystem.bo.custom.impl.EmployeeBOImpl;
 import lk.ijse.spicesystem.dao.DAOFactory;
 import lk.ijse.spicesystem.dto.EmployeeDTO;
 import lk.ijse.spicesystem.modelBefore.EmployeeModel;
-import lk.ijse.spicesystem.entity.Employee;
 import lk.ijse.spicesystem.util.Navigation;
 import lk.ijse.spicesystem.util.Routes;
 import org.controlsfx.control.Notifications;
@@ -35,7 +33,7 @@ public class AddEmployeeFormController {
     public JFXTextField txtAddress;
     public AnchorPane dashboardPane;
 
-    EmployeeBO employeeBO = (EmployeeBO) BOFactory.getBoFactory().getDAO(DAOFactory.DAOTypes.EMPLOYEE);
+    EmployeeBO employeeBO = (EmployeeBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.EMPLOYEE);
 
     public void initialize(){
         txtAddress.clear();

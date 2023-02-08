@@ -7,6 +7,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import lk.ijse.spicesystem.bo.BOFactory;
+import lk.ijse.spicesystem.bo.custom.SupplierBO;
+import lk.ijse.spicesystem.dto.SupplierDTO;
 import lk.ijse.spicesystem.modelBefore.SupplierModel;
 import lk.ijse.spicesystem.entity.Supplier;
 import lk.ijse.spicesystem.util.Navigation;
@@ -25,6 +28,7 @@ public class AddSupplierFormController {
     public JFXTextField txtEmail;
     public JFXTextField txtTelephone;
     public AnchorPane dashboardPane;
+    SupplierBO supplierBO = (SupplierBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SUPPLIER);
 
     public void initialize(){
         try {
@@ -36,10 +40,10 @@ public class AddSupplierFormController {
 
 
     public void btnSubmitOnAction(ActionEvent actionEvent) {
-        Supplier supplier = new Supplier(lblSupplierId.getText(), txtSupplierName.getText(), txtAddress.getText(), txtEmail.getText(), Integer.valueOf(txtTelephone.getText()));
+        SupplierDTO supplierDTO = new SupplierDTO(lblSupplierId.getText(), txtSupplierName.getText(), txtAddress.getText(), txtEmail.getText(), Integer.valueOf(txtTelephone.getText()));
 
         try {
-            boolean isAdded = SupplierModel.addSupplierDetail(supplier);
+            boolean isAdded = supplierBO.add(supplierDTO);
 
             if(isAdded){
 

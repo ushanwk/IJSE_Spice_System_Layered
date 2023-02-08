@@ -11,9 +11,16 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import javafx.util.Duration;
+import lk.ijse.spicesystem.bo.BOFactory;
+import lk.ijse.spicesystem.bo.custom.MaterialBO;
+import lk.ijse.spicesystem.bo.custom.ProductionBO;
+import lk.ijse.spicesystem.bo.custom.ProductionStockBO;
+import lk.ijse.spicesystem.bo.custom.RawStockBO;
+import lk.ijse.spicesystem.bo.custom.impl.MaterialBOImpl;
+import lk.ijse.spicesystem.dao.DAOFactory;
 import lk.ijse.spicesystem.db.DBConnection;
+import lk.ijse.spicesystem.dto.ProductionStockDTO;
 import lk.ijse.spicesystem.modelBefore.ProductionStockModel;
-import lk.ijse.spicesystem.entity.ProductionStock;
 import org.controlsfx.control.Notifications;
 
 import java.sql.SQLException;
@@ -28,6 +35,11 @@ public class AddProductionStockFormController {
     public Label lblProductionStockId;
     public JFXTextField txtAmount;
     ObservableList<String> material = FXCollections.observableArrayList();
+
+    ProductionStockBO productionStockBO = (ProductionStockBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PRODUCTIONSTOCK);
+    RawStockBO rawStockBO = (RawStockBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.RAWSTOCK);
+    ProductionBO productionBO = (ProductionBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PRODUCTION);
+    MaterialBO materialBO = new MaterialBOImpl();
 
     public void initialize(){
 
@@ -47,7 +59,7 @@ public class AddProductionStockFormController {
         cmbMaterial.setItems(material);
 
         try {
-            lblProductionStockId.setText(ProductionStockModel.nextProductionStockId());
+            lblProductionStockId.setText(productionStockBO.nextId());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -58,7 +70,7 @@ public class AddProductionStockFormController {
         String materialId = String.valueOf((String.valueOf(cmbMaterial.getValue()).charAt(0)));
 
         try {
-            cmbBatchId.setItems(ProductionStockModel.getBatchID(materialId));
+            cmbBatchId.setItems(rawStockBO.getBatchID(materialId));
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -71,7 +83,7 @@ public class AddProductionStockFormController {
 
         try {
             lblQtyOnHand.setText(String.valueOf(ProductionStockModel.getQtyOnHandBatchId(batchId)));
-            cmbProduction.setItems(ProductionStockModel.getProduction(batchId));
+            cmbProduction.setItems(productionBO.getProduction(batchId));
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -97,24 +109,24 @@ public class AddProductionStockFormController {
             productionId = "P6";
         }
 
-        ProductionStock productionStock = new ProductionStock(lblProductionStockId.getText(), Integer.valueOf(txtAmount.getText()), String.valueOf(cmbBatchId.getValue()), productionId);
+        ProductionStockDTO productionStockDTO = new ProductionStockDTO(lblProductionStockId.getText(), Integer.valueOf(txtAmount.getText()), String.valueOf(cmbBatchId.getValue()), productionId);
 
         try {
-            boolean isAddedProductionStock = ProductionStockModel.productionStockTable(productionStock);
+            boolean isAddedProductionStock = productionStockBO.add(productionStockDTO);
 
             DBConnection.getInstance().getConnection().setAutoCommit(false);
 
             if(isAddedProductionStock){
 
-                boolean isAddedProduction = ProductionStockModel.productionTale(Integer.valueOf(txtAmount.getText()), String.valueOf(cmbProduction.getValue()));
+                boolean isAddedProduction = productionBO.productionTale(Integer.valueOf(txtAmount.getText()), String.valueOf(cmbProduction.getValue()));
 
                 if(isAddedProduction){
 
-                    boolean isAddedRawStock = ProductionStockModel.RawStockTable(Integer.valueOf(txtAmount.getText()), String.valueOf(cmbBatchId.getValue()));
+                    boolean isAddedRawStock = rawStockBO.RawStockTable(Integer.valueOf(txtAmount.getText()), String.valueOf(cmbBatchId.getValue()));
 
                     if(isAddedProduction){
 
-                        boolean isAddedMaterial = ProductionStockModel.materialTable(Integer.valueOf(txtAmount.getText()), String.valueOf(cmbMaterial.getValue()));
+                        boolean isAddedMaterial = materialBO.materialTable(Integer.valueOf(txtAmount.getText()), String.valueOf(cmbMaterial.getValue()));
 
                         if(isAddedMaterial){
 

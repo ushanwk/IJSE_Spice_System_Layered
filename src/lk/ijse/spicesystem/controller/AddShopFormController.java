@@ -6,6 +6,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.spicesystem.bo.BOFactory;
+import lk.ijse.spicesystem.bo.custom.ShopBO;
+import lk.ijse.spicesystem.dao.DAOFactory;
+import lk.ijse.spicesystem.dto.ShopDTO;
 import lk.ijse.spicesystem.modelBefore.ShopModel;
 import lk.ijse.spicesystem.entity.Shop;
 import lk.ijse.spicesystem.util.Navigation;
@@ -26,6 +30,8 @@ public class AddShopFormController {
     public JFXTextField txtOwnerTelephone;
     public JFXTextField txtOwneNic;
     public AnchorPane dashboardPane;
+
+    ShopBO shopBO = (ShopBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SHOP);
 
     public void initialize(){
         txtShopName.requestFocus();
@@ -81,11 +87,11 @@ public class AddShopFormController {
 
     public void btnSubmitOnAction(ActionEvent actionEvent) {
 
-        Shop shop = new Shop(lblShopId.getText(), txtShopName.getText(), txtAddress.getText(), txtEmail.getText(), Integer.valueOf(txtTelephone.getText()),
+        ShopDTO shopDTO = new ShopDTO(lblShopId.getText(), txtShopName.getText(), txtAddress.getText(), txtEmail.getText(), Integer.valueOf(txtTelephone.getText()),
                 txtOwnerNAme.getText(), txtOwneNic.getText(), Integer.valueOf(txtOwnerTelephone.getText()));
 
         try {
-            boolean isAddes = ShopModel.addShopDetail(shop);
+            boolean isAddes = shopBO.add(shopDTO);
 
             if(isAddes){
                 System.out.println("Done");

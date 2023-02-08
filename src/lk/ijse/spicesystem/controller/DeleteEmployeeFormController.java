@@ -7,6 +7,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import lk.ijse.spicesystem.bo.BOFactory;
+import lk.ijse.spicesystem.bo.custom.EmployeeBO;
+import lk.ijse.spicesystem.dto.EmployeeDTO;
 import lk.ijse.spicesystem.modelBefore.EmployeeModel;
 import lk.ijse.spicesystem.entity.Employee;
 import lk.ijse.spicesystem.util.Navigation;
@@ -26,6 +29,8 @@ public class DeleteEmployeeFormController {
     public Label lblJobRole;
     public AnchorPane dashboardPane;
 
+    EmployeeBO employeeBO = (EmployeeBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.EMPLOYEE);
+
     public void initialize(){
         try {
             cmbEmployeeId.setItems(EmployeeModel.getAllEmpId());
@@ -37,7 +42,7 @@ public class DeleteEmployeeFormController {
     public void cmbEmployeeIdOnAction(ActionEvent actionEvent) {
 
         try {
-            Employee employee = EmployeeModel.searchEmployee(String.valueOf(cmbEmployeeId.getValue()));
+            Employee employee = employeeBO.search(String.valueOf(cmbEmployeeId.getValue()));
 
             lblFirstName.setText(employee.getFirstName());
             lblSecondName.setText(employee.getLastName());

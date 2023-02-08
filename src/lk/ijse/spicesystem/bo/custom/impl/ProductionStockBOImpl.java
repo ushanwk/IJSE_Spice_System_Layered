@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import lk.ijse.spicesystem.bo.custom.ProductionStockBO;
 import lk.ijse.spicesystem.dao.DAOFactory;
 import lk.ijse.spicesystem.dao.custom.ProductionStockDAO;
+import lk.ijse.spicesystem.dto.ProductionStockDTO;
 import lk.ijse.spicesystem.entity.ProductionStock;
 
 import java.sql.SQLException;
@@ -18,8 +19,8 @@ public class ProductionStockBOImpl implements ProductionStockBO {
     }
 
     @Override
-    public boolean add(ProductionStock productionStock) throws SQLException, ClassNotFoundException {
-        return productionStockDAO.add(productionStock);
+    public boolean add(ProductionStockDTO productionStockDTO) throws SQLException, ClassNotFoundException {
+        return productionStockDAO.add(new ProductionStock(productionStockDTO.getProductionStockID(), productionStockDTO.getAmount(), productionStockDTO.getBatchID(), productionStockDTO.getProductionID()));
     }
 
     @Override
