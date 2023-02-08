@@ -2,7 +2,7 @@ package lk.ijse.spicesystem.dao.custom;
 
 import javafx.collections.ObservableList;
 import lk.ijse.spicesystem.dao.CrudDAO;
-import lk.ijse.spicesystem.model.Material;
+import lk.ijse.spicesystem.entity.Material;
 
 import java.sql.SQLException;
 

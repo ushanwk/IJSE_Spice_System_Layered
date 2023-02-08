@@ -1,9 +1,12 @@
 package lk.ijse.spicesystem.bo.custom.impl;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lk.ijse.spicesystem.bo.custom.MaterialBO;
 import lk.ijse.spicesystem.dao.DAOFactory;
 import lk.ijse.spicesystem.dao.custom.MaterialDAO;
+import lk.ijse.spicesystem.dto.MaterialDTO;
+import lk.ijse.spicesystem.entity.Material;
 
 import java.sql.SQLException;
 
@@ -17,7 +20,7 @@ public class MaterialBOImpl implements MaterialBO {
     }
 
     @Override
-    public ObservableList getAllMaterials() throws SQLException, ClassNotFoundException {
+    public ObservableList<String> getAllMaterials() throws SQLException, ClassNotFoundException {
         return materialDAO.getAllMaterials();
     }
 

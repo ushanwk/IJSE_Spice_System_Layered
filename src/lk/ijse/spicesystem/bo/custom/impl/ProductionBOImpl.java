@@ -1,9 +1,12 @@
 package lk.ijse.spicesystem.bo.custom.impl;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lk.ijse.spicesystem.bo.custom.ProductionBO;
 import lk.ijse.spicesystem.dao.DAOFactory;
 import lk.ijse.spicesystem.dao.custom.ProductionDAO;
+import lk.ijse.spicesystem.dto.ProductionDTO;
+import lk.ijse.spicesystem.entity.Production;
 
 import java.sql.SQLException;
 
@@ -12,7 +15,7 @@ public class ProductionBOImpl implements ProductionBO {
     ProductionDAO productionDAO = (ProductionDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.PRODUCTION);
 
     @Override
-    public ObservableList getProductionItem() throws SQLException, ClassNotFoundException {
+    public ObservableList<String> getProductionItem() throws SQLException, ClassNotFoundException {
         return productionDAO.getProductionItem();
     }
 

@@ -13,7 +13,7 @@ import javafx.scene.paint.Paint;
 import javafx.util.Duration;
 import lk.ijse.spicesystem.modelBefore.RawStockModel;
 import lk.ijse.spicesystem.modelBefore.SupplierModel;
-import lk.ijse.spicesystem.model.RawStock;
+import lk.ijse.spicesystem.entity.RawStock;
 import org.controlsfx.control.Notifications;
 
 import java.sql.Date;

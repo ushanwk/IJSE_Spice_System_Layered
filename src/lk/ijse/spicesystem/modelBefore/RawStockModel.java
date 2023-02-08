@@ -2,7 +2,7 @@ package lk.ijse.spicesystem.modelBefore;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import lk.ijse.spicesystem.model.RawStock;
+import lk.ijse.spicesystem.entity.RawStock;
 import lk.ijse.spicesystem.dao.CrudUtil;
 
 import java.sql.ResultSet;

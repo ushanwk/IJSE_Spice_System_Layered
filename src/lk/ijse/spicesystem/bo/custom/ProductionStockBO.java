@@ -2,7 +2,7 @@ package lk.ijse.spicesystem.bo.custom;
 
 import javafx.collections.ObservableList;
 import lk.ijse.spicesystem.bo.SuperBO;
-import lk.ijse.spicesystem.model.ProductionStock;
+import lk.ijse.spicesystem.entity.ProductionStock;
 
 import java.sql.SQLException;
 

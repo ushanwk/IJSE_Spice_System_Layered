@@ -8,7 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import lk.ijse.spicesystem.modelBefore.ProfileModel;
-import lk.ijse.spicesystem.model.User;
+import lk.ijse.spicesystem.entity.User;
 import lk.ijse.spicesystem.util.Navigation;
 import lk.ijse.spicesystem.util.Routes;
 import org.controlsfx.control.Notifications;

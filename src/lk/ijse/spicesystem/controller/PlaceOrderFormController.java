@@ -11,7 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import lk.ijse.spicesystem.db.DBConnection;
 import lk.ijse.spicesystem.modelBefore.PlaceOrderModel;
-import lk.ijse.spicesystem.model.Order;
+import lk.ijse.spicesystem.entity.Order;
 import org.controlsfx.control.Notifications;
 
 import java.sql.SQLException;

@@ -1,12 +1,15 @@
 package lk.ijse.spicesystem.bo.custom.impl;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lk.ijse.spicesystem.bo.custom.EmployeeBO;
 import lk.ijse.spicesystem.dao.DAOFactory;
 import lk.ijse.spicesystem.dao.custom.EmployeeDAO;
-import lk.ijse.spicesystem.model.Employee;
+import lk.ijse.spicesystem.dto.EmployeeDTO;
+import lk.ijse.spicesystem.entity.Employee;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class EmployeeBOImpl implements EmployeeBO {
     EmployeeDAO employeeDAO = (EmployeeDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.EMPLOYEE);
@@ -18,12 +21,13 @@ public class EmployeeBOImpl implements EmployeeBO {
     }
 
     @Override
-    public ObservableList getAllId() throws SQLException, ClassNotFoundException {
+    public ObservableList<String> getAllId() throws SQLException, ClassNotFoundException {
         return employeeDAO.getAllId();
     }
 
     @Override
-    public boolean add(Employee employee) throws SQLException, ClassNotFoundException {
+    public boolean add(EmployeeDTO employeeDTO) throws SQLException, ClassNotFoundException {
+        Employee employee = new Employee(employeeDTO.getEmpId(), employeeDTO.getFirstName(), employeeDTO.getLastName(), employeeDTO.getEmail(), employeeDTO.getSalaryPerDay(), employeeDTO.getAddress(), employeeDTO.getJobRole());
         return employeeDAO.add(employee);
     }
 
@@ -33,7 +37,8 @@ public class EmployeeBOImpl implements EmployeeBO {
     }
 
     @Override
-    public boolean update(Employee employee) throws SQLException, ClassNotFoundException {
+    public boolean update(EmployeeDTO employeeDTO) throws SQLException, ClassNotFoundException {
+        Employee employee = new Employee(employeeDTO.getEmpId(), employeeDTO.getFirstName(), employeeDTO.getLastName(), employeeDTO.getEmail(), employeeDTO.getSalaryPerDay(), employeeDTO.getAddress(), employeeDTO.getJobRole());
         return employeeDAO.update(employee);
     }
 

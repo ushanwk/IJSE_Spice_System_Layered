@@ -4,7 +4,8 @@ import javafx.collections.ObservableList;
 import lk.ijse.spicesystem.bo.custom.RawStockBO;
 import lk.ijse.spicesystem.dao.DAOFactory;
 import lk.ijse.spicesystem.dao.custom.RawStockDAO;
-import lk.ijse.spicesystem.model.RawStock;
+import lk.ijse.spicesystem.dto.RawStockDTO;
+import lk.ijse.spicesystem.entity.RawStock;
 
 import java.sql.SQLException;
 
@@ -13,12 +14,13 @@ public class RawStockBOImpl implements RawStockBO {
     RawStockDAO rawStockDAO = (RawStockDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.RAWSTOCK);
 
     @Override
-    public boolean add(RawStock rawStock) throws SQLException, ClassNotFoundException {
+    public boolean add(RawStockDTO rawStockDTO) throws SQLException, ClassNotFoundException {
+        RawStock rawStock = new RawStock(rawStockDTO.getBatchId(), rawStockDTO.getMaterialId(), rawStockDTO.getAmount(), rawStockDTO.getSupplierId(), rawStockDTO.getDate());
         return rawStockDAO.add(rawStock);
     }
 
     @Override
-    public ObservableList getBatchID(String materialId) throws SQLException, ClassNotFoundException {
+    public ObservableList<String> getBatchID(String materialId) throws SQLException, ClassNotFoundException {
         return rawStockDAO.getBatchID(materialId);
     }
 

@@ -1,6 +1,6 @@
 package lk.ijse.spicesystem.modelBefore;
 
-import lk.ijse.spicesystem.model.User;
+import lk.ijse.spicesystem.entity.User;
 import lk.ijse.spicesystem.dao.CrudUtil;
 
 import java.sql.ResultSet;

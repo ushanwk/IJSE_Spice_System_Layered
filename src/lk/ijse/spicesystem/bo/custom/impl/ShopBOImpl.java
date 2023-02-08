@@ -4,7 +4,8 @@ import javafx.collections.ObservableList;
 import lk.ijse.spicesystem.bo.custom.ShopBO;
 import lk.ijse.spicesystem.dao.DAOFactory;
 import lk.ijse.spicesystem.dao.custom.ShopDAO;
-import lk.ijse.spicesystem.model.Shop;
+import lk.ijse.spicesystem.dto.ShopDTO;
+import lk.ijse.spicesystem.entity.Shop;
 
 import java.sql.SQLException;
 
@@ -18,22 +19,25 @@ public class ShopBOImpl implements ShopBO {
     }
 
     @Override
-    public ObservableList getAllId() throws SQLException, ClassNotFoundException {
+    public ObservableList<String> getAllId() throws SQLException, ClassNotFoundException {
         return shopDAO.getAllId();
     }
 
     @Override
-    public boolean add(Shop shop) throws SQLException, ClassNotFoundException {
+    public boolean add(ShopDTO shopDTO) throws SQLException, ClassNotFoundException {
+        Shop shop = new Shop(shopDTO.getShopId(), shopDTO.getShopName(), shopDTO.getAddress(), shopDTO.getEmail(), shopDTO.getShopTelephone(), shopDTO.getOwnerName(), shopDTO.getOwnerNic(), shopDTO.getOwnerTelephone());
         return shopDAO.add(shop);
     }
 
     @Override
-    public Shop search(String id) throws SQLException, ClassNotFoundException {
-        return shopDAO.search(id);
+    public ShopDTO search(String id) throws SQLException, ClassNotFoundException {
+        Shop shop = shopDAO.search(id);
+        return new ShopDTO(shop.getShopId(), shop.getShopName(), shop.getAddress(), shop.getEmail(), shop.getShopTelephone(), shop.getOwnerName(), shop.getOwnerNic(), shop.getOwnerTelephone());
     }
 
     @Override
-    public boolean update(Shop shop) throws SQLException, ClassNotFoundException {
+    public boolean update(ShopDTO shopDTO) throws SQLException, ClassNotFoundException {
+        Shop shop = new Shop(shopDTO.getShopId(), shopDTO.getShopName(), shopDTO.getAddress(), shopDTO.getEmail(), shopDTO.getShopTelephone(), shopDTO.getOwnerName(), shopDTO.getOwnerNic(), shopDTO.getOwnerTelephone());
         return shopDAO.update(shop);
     }
 

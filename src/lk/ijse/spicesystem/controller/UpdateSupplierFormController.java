@@ -5,7 +5,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.spicesystem.modelBefore.SupplierModel;
-import lk.ijse.spicesystem.model.Supplier;
+import lk.ijse.spicesystem.entity.Supplier;
 import lk.ijse.spicesystem.util.Navigation;
 import lk.ijse.spicesystem.util.Routes;
 

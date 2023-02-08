@@ -9,8 +9,13 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Paint;
 import javafx.util.Duration;
+import lk.ijse.spicesystem.bo.BOFactory;
+import lk.ijse.spicesystem.bo.custom.EmployeeBO;
+import lk.ijse.spicesystem.bo.custom.impl.EmployeeBOImpl;
+import lk.ijse.spicesystem.dao.DAOFactory;
+import lk.ijse.spicesystem.dto.EmployeeDTO;
 import lk.ijse.spicesystem.modelBefore.EmployeeModel;
-import lk.ijse.spicesystem.model.Employee;
+import lk.ijse.spicesystem.entity.Employee;
 import lk.ijse.spicesystem.util.Navigation;
 import lk.ijse.spicesystem.util.Routes;
 import org.controlsfx.control.Notifications;
@@ -30,6 +35,8 @@ public class AddEmployeeFormController {
     public JFXTextField txtAddress;
     public AnchorPane dashboardPane;
 
+    EmployeeBO employeeBO = (EmployeeBO) BOFactory.getBoFactory().getDAO(DAOFactory.DAOTypes.EMPLOYEE);
+
     public void initialize(){
         txtAddress.clear();
         txtEmail.clear();
@@ -48,10 +55,10 @@ public class AddEmployeeFormController {
 
     public void btnSubmitOnAction(ActionEvent actionEvent) {
 
-        Employee employee = new Employee(lblEmpId.getText(), txtFName.getText(), txtLName.getText(), txtEmail.getText(), Double.valueOf(txtSalaryPerDay.getText()), txtAddress.getText(), txtJobRole.getText());
+        EmployeeDTO employeeDTO = new EmployeeDTO(lblEmpId.getText(), txtFName.getText(), txtLName.getText(), txtEmail.getText(), Double.valueOf(txtSalaryPerDay.getText()), txtAddress.getText(), txtJobRole.getText());
 
         try {
-            boolean isAdded = EmployeeModel.addEmployeeDetail(employee);
+            boolean isAdded = employeeBO.add(employeeDTO);
 
             if(isAdded){
 

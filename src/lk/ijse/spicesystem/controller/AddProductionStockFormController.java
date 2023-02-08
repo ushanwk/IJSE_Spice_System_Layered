@@ -13,7 +13,7 @@ import javafx.scene.paint.Paint;
 import javafx.util.Duration;
 import lk.ijse.spicesystem.db.DBConnection;
 import lk.ijse.spicesystem.modelBefore.ProductionStockModel;
-import lk.ijse.spicesystem.model.ProductionStock;
+import lk.ijse.spicesystem.entity.ProductionStock;
 import org.controlsfx.control.Notifications;
 
 import java.sql.SQLException;

@@ -2,7 +2,7 @@ package lk.ijse.spicesystem.dao.custom;
 
 import javafx.collections.ObservableList;
 import lk.ijse.spicesystem.dao.CrudDAO;
-import lk.ijse.spicesystem.model.PaymentMethod;
+import lk.ijse.spicesystem.entity.PaymentMethod;
 
 import java.sql.SQLException;
 

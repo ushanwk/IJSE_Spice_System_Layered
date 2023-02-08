@@ -4,7 +4,7 @@ import javafx.collections.ObservableList;
 import lk.ijse.spicesystem.bo.custom.ProductionStockBO;
 import lk.ijse.spicesystem.dao.DAOFactory;
 import lk.ijse.spicesystem.dao.custom.ProductionStockDAO;
-import lk.ijse.spicesystem.model.ProductionStock;
+import lk.ijse.spicesystem.entity.ProductionStock;
 
 import java.sql.SQLException;
 

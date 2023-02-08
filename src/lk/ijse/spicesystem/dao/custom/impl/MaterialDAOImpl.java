@@ -4,7 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lk.ijse.spicesystem.dao.CrudUtil;
 import lk.ijse.spicesystem.dao.custom.MaterialDAO;
-import lk.ijse.spicesystem.model.Material;
+import lk.ijse.spicesystem.entity.Material;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
