@@ -7,7 +7,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
-import lk.ijse.spicesystem.modelBefore.SupplierModel;
+import lk.ijse.spicesystem.bo.BOFactory;
+import lk.ijse.spicesystem.bo.custom.SupplierBO;
+
 import lk.ijse.spicesystem.entity.Supplier;
 import lk.ijse.spicesystem.util.Navigation;
 import lk.ijse.spicesystem.util.Routes;
@@ -24,10 +26,12 @@ public class DeleteSupplierFormController {
     public Label lblSupplierTelephone;
     public AnchorPane dashboardPane;
 
+    SupplierBO supplierBO = (SupplierBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SUPPLIER);
+
 
     public void initialize(){
         try {
-            cmbSupplierId.setItems(SupplierModel.getAllSupId());
+            cmbSupplierId.setItems(supplierBO.getAllId());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -41,7 +45,7 @@ public class DeleteSupplierFormController {
         String id = String.valueOf(cmbSupplierId.getValue());
 
         try {
-            Supplier supplier = SupplierModel.searchSupplier(id);
+            Supplier supplier = supplierBO.search(id);
 
             lblSupplierName.setText(supplier.getSupplierName());
             lblSupplierAddress.setText(supplier.getAddress());
@@ -58,7 +62,7 @@ public class DeleteSupplierFormController {
         String id = String.valueOf(cmbSupplierId.getValue());
 
         try {
-            boolean isDeleted = SupplierModel.deleteSupplier(id);
+            boolean isDeleted = supplierBO.delete(id);
 
             if(isDeleted){
 

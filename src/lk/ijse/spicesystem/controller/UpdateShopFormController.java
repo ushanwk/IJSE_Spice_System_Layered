@@ -3,13 +3,19 @@ package lk.ijse.spicesystem.controller;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.spicesystem.modelBefore.ShopModel;
+//import lk.ijse.spicesystem.modelBefore.ShopModel;
+import javafx.util.Duration;
+import lk.ijse.spicesystem.bo.BOFactory;
+import lk.ijse.spicesystem.bo.custom.ShopBO;
+import lk.ijse.spicesystem.dto.ShopDTO;
 import lk.ijse.spicesystem.entity.Shop;
 import lk.ijse.spicesystem.util.Navigation;
 import lk.ijse.spicesystem.util.Routes;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -28,13 +34,15 @@ public class UpdateShopFormController {
     public JFXTextField txtEmail;
     public AnchorPane dashboardPane;
 
+    ShopBO shopBO = (ShopBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SHOP);
+
     public void initialize(){
         imgDotOne.setVisible(true);
         imgDotTwo.setVisible(false);
         imgDotThree.setVisible(false);
 
         try {
-            cmbShopId.setItems(ShopModel.getAllShopId());
+            cmbShopId.setItems(shopBO.getAllId());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -46,7 +54,7 @@ public class UpdateShopFormController {
 
 
         try {
-            Shop shop = ShopModel.searchShop(id);
+            ShopDTO shop = shopBO.search(id);
 
             txtShopName.setText(shop.getShopName());
             txtShopAddress.setText(shop.getAddress());
@@ -116,7 +124,7 @@ public class UpdateShopFormController {
         imgDotTwo.setVisible(true);
         imgDotThree.setVisible(false);
 
-        Shop shop = new Shop(
+        ShopDTO shop = new ShopDTO(
                 String.valueOf(cmbShopId.getValue()),
                 txtShopName.getText(),
                 txtShopAddress.getText(),
@@ -128,10 +136,18 @@ public class UpdateShopFormController {
         );
 
         try {
-            boolean isAdded = ShopModel.updateShop(shop);
+            boolean isAdded = shopBO.update(shop);
 
             if(isAdded){
-                System.out.println("Done");
+                Image image = new Image("/lk/ijse/spicesystem/asset/correct.png");
+                Notifications notifications = Notifications.create();
+                notifications.graphic(new ImageView(image));
+                notifications.text("Updated Suuccesful");
+                notifications.title("Spice System");
+                notifications.hideAfter(Duration.seconds(3));
+                notifications.show();
+
+                initialize();
             }
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);

@@ -61,7 +61,7 @@ public class FinanceDAOImpl implements FinanceDAO {
         String latestId = null;
 
         if(result1.next()){
-            latestId = result.getString("FinanceID");
+            latestId = result1.getString("FinanceID");
         }
 
         String[] SUs = latestId.split("FI");

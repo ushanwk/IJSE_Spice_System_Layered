@@ -8,9 +8,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import lk.ijse.spicesystem.bo.BOFactory;
+import lk.ijse.spicesystem.bo.custom.ShopBO;
 import lk.ijse.spicesystem.bo.custom.SupplierBO;
 import lk.ijse.spicesystem.dto.SupplierDTO;
-import lk.ijse.spicesystem.modelBefore.SupplierModel;
 import lk.ijse.spicesystem.entity.Supplier;
 import lk.ijse.spicesystem.util.Navigation;
 import lk.ijse.spicesystem.util.Routes;
@@ -29,10 +29,11 @@ public class AddSupplierFormController {
     public JFXTextField txtTelephone;
     public AnchorPane dashboardPane;
     SupplierBO supplierBO = (SupplierBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SUPPLIER);
+    ShopBO shopBO = (ShopBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SHOP);
 
     public void initialize(){
         try {
-            lblSupplierId.setText(SupplierModel.nextShopId());
+            lblSupplierId.setText(shopBO.nextId());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

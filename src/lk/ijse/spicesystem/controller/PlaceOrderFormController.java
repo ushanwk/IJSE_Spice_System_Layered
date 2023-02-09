@@ -9,9 +9,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import lk.ijse.spicesystem.bo.BOFactory;
+import lk.ijse.spicesystem.bo.custom.*;
 import lk.ijse.spicesystem.db.DBConnection;
-import lk.ijse.spicesystem.modelBefore.PlaceOrderModel;
-import lk.ijse.spicesystem.entity.Order;
+import lk.ijse.spicesystem.dto.OrderDTO;
 import org.controlsfx.control.Notifications;
 
 import java.sql.SQLException;
@@ -28,11 +29,19 @@ public class PlaceOrderFormController {
     public JFXComboBox cmbPaymeneMethod;
 
 
+    PlaceOrderBO placeOrderBO = (PlaceOrderBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PLACEORDER);
+    FinishedItemBO finishedItemBO = (FinishedItemBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.FINISHEDITEM);
+    FinanceBO financeBO = (FinanceBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.FINANCE);
+    PaymentMethodBO paymentMethodBO = (PaymentMethodBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENTMETHOD);
+    ShopBO shopBO = (ShopBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SHOP);
+    ProductionBO productionBO = (ProductionBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PRODUCTION);
+
+
     public void initialize(){
 
         try {
-            cmbShopId.setItems(PlaceOrderModel.getShopId());
-            lblOrderId.setText(PlaceOrderModel.nextOrderId());
+            cmbShopId.setItems(shopBO.getAllId());
+            lblOrderId.setText(placeOrderBO.nextId());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -42,8 +51,8 @@ public class PlaceOrderFormController {
     public void cmbShopIdOnAction(ActionEvent actionEvent) {
 
         try {
-            lblShop.setText(String.valueOf(PlaceOrderModel.getShopName(String.valueOf(cmbShopId.getValue()))));
-            cmbProductionItem.setItems(PlaceOrderModel.getItem());
+            lblShop.setText(String.valueOf(shopBO.getShopName(String.valueOf(cmbShopId.getValue()))));
+            cmbProductionItem.setItems(productionBO.getProductionItem());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -53,7 +62,7 @@ public class PlaceOrderFormController {
     public void cmbProductionItemOnAction(ActionEvent actionEvent) {
 
         try {
-            cmbFinishedItem.setItems(PlaceOrderModel.getFinishedItem(String.valueOf(cmbProductionItem.getValue())));
+            cmbFinishedItem.setItems(finishedItemBO.getFinishedItem(String.valueOf(cmbProductionItem.getValue())));
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -63,8 +72,8 @@ public class PlaceOrderFormController {
     public void cmbFinishedItemOnAction(ActionEvent actionEvent) {
 
         try {
-            lblItemOnStock.setText(PlaceOrderModel.getQtyOnHand(String.valueOf(cmbFinishedItem.getValue())));
-            cmbPaymeneMethod.setItems(PlaceOrderModel.paymentmethod());
+            lblItemOnStock.setText(finishedItemBO.getQtyOnHand(String.valueOf(cmbFinishedItem.getValue())));
+            cmbPaymeneMethod.setItems(paymentMethodBO.paymentmethod());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -76,27 +85,28 @@ public class PlaceOrderFormController {
     public void cmbPaymentMethodOnAction(ActionEvent actionEvent) {
     }
 
+
     public void btnSubmitOnAction(ActionEvent actionEvent) {
 
-        Order order = new Order(lblOrderId.getText(), String.valueOf(cmbShopId.getValue()), String.valueOf(cmbFinishedItem.getValue()), Integer.valueOf(txtAmount.getText()), Double.valueOf(txtPrice.getText()));
+        OrderDTO order = new OrderDTO(lblOrderId.getText(), String.valueOf(cmbShopId.getValue()), String.valueOf(cmbFinishedItem.getValue()), Integer.valueOf(txtAmount.getText()), Double.valueOf(txtPrice.getText()));
 
         try {
 
             DBConnection.getInstance().getConnection().setAutoCommit(false);
 
-            boolean isUpdateFinished = PlaceOrderModel.updateFinishedItem(String.valueOf(cmbFinishedItem.getValue()), Integer.valueOf(txtAmount.getText()));
+            boolean isUpdateFinished = finishedItemBO.updateFinishedItem(String.valueOf(cmbFinishedItem.getValue()), Integer.valueOf(txtAmount.getText()));
 
             if(isUpdateFinished) {
 
-                boolean isUpdateOrder = PlaceOrderModel.updateOrder(order);
+                boolean isUpdateOrder = placeOrderBO.add(order);
 
                 if(isUpdateOrder){
 
-                    boolean isUpdateFinance = PlaceOrderModel.updateFinance(String.valueOf(cmbPaymeneMethod.getValue()), Integer.valueOf(txtPrice.getText()));
+                    boolean isUpdateFinance = financeBO.updateFinance(String.valueOf(cmbPaymeneMethod.getValue()), Integer.valueOf(txtPrice.getText()));
 
-                    if(isUpdateOrder){
+                    if(isUpdateFinance){
 
-                        boolean isUpdatePaymentMethod = PlaceOrderModel.updatePaymentMethod(String.valueOf(cmbPaymeneMethod.getValue()), Double.valueOf(txtPrice.getText()));
+                        boolean isUpdatePaymentMethod = paymentMethodBO.updatePaymentMethod(String.valueOf(cmbPaymeneMethod.getValue()), Double.valueOf(txtPrice.getText()));
 
                         if(isUpdatePaymentMethod){
 

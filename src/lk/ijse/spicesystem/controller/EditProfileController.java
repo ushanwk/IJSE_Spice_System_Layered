@@ -7,7 +7,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-import lk.ijse.spicesystem.modelBefore.ProfileModel;
+import lk.ijse.spicesystem.bo.custom.UserBO;
+import lk.ijse.spicesystem.bo.custom.impl.UserBOImpl;
+import lk.ijse.spicesystem.dto.UserDTO;
 import lk.ijse.spicesystem.entity.User;
 import lk.ijse.spicesystem.util.Navigation;
 import lk.ijse.spicesystem.util.Routes;
@@ -26,12 +28,14 @@ public class EditProfileController {
     public JFXTextField txtJobrole;
     public AnchorPane pane;
 
+    UserBO userBO = new UserBOImpl();
+
     public  void initialize(){
 
         String userName = LoginFormController.userName;
 
         try {
-            User user = ProfileModel.getUserInfo(userName);
+            UserDTO user = userBO.search(userName);
 
             lblUsername.setText(userName);
             txtFname.setText(user.getfName());
@@ -47,12 +51,14 @@ public class EditProfileController {
 
     }
 
+
+
     public void btnSaveOnAction(ActionEvent actionEvent) {
 
-        User user = new User(lblUsername.getText(), txtFname.getText(), txtLname.getText(), txtEmail.getText(), Integer.valueOf(txtTelephone.getText()), txtAddress.getText(), txtJobrole.getText());
+        UserDTO user = new UserDTO(lblUsername.getText(), txtFname.getText(), txtLname.getText(), txtEmail.getText(), Integer.valueOf(txtTelephone.getText()), txtAddress.getText(), txtJobrole.getText());
 
         try {
-            boolean isUpdated = ProfileModel.updateUserTable(user);
+            boolean isUpdated = userBO.add(user);
 
             if(isUpdated){
 

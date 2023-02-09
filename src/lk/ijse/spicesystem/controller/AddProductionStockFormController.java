@@ -20,7 +20,6 @@ import lk.ijse.spicesystem.bo.custom.impl.MaterialBOImpl;
 import lk.ijse.spicesystem.dao.DAOFactory;
 import lk.ijse.spicesystem.db.DBConnection;
 import lk.ijse.spicesystem.dto.ProductionStockDTO;
-import lk.ijse.spicesystem.modelBefore.ProductionStockModel;
 import org.controlsfx.control.Notifications;
 
 import java.sql.SQLException;
@@ -82,7 +81,7 @@ public class AddProductionStockFormController {
         String batchId = String.valueOf(cmbBatchId.getValue());
 
         try {
-            lblQtyOnHand.setText(String.valueOf(ProductionStockModel.getQtyOnHandBatchId(batchId)));
+            lblQtyOnHand.setText(String.valueOf(productionStockBO.getQtyOnHand(batchId)));
             cmbProduction.setItems(productionBO.getProduction(batchId));
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
@@ -124,7 +123,7 @@ public class AddProductionStockFormController {
 
                     boolean isAddedRawStock = rawStockBO.RawStockTable(Integer.valueOf(txtAmount.getText()), String.valueOf(cmbBatchId.getValue()));
 
-                    if(isAddedProduction){
+                    if(isAddedRawStock){
 
                         boolean isAddedMaterial = materialBO.materialTable(Integer.valueOf(txtAmount.getText()), String.valueOf(cmbMaterial.getValue()));
 

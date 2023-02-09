@@ -9,8 +9,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import lk.ijse.spicesystem.bo.BOFactory;
 import lk.ijse.spicesystem.bo.custom.EmployeeBO;
-import lk.ijse.spicesystem.dto.EmployeeDTO;
-import lk.ijse.spicesystem.modelBefore.EmployeeModel;
 import lk.ijse.spicesystem.entity.Employee;
 import lk.ijse.spicesystem.util.Navigation;
 import lk.ijse.spicesystem.util.Routes;
@@ -33,7 +31,7 @@ public class DeleteEmployeeFormController {
 
     public void initialize(){
         try {
-            cmbEmployeeId.setItems(EmployeeModel.getAllEmpId());
+            cmbEmployeeId.setItems(employeeBO.getAllId());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -62,7 +60,7 @@ public class DeleteEmployeeFormController {
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
         try {
-            boolean isDeleted = EmployeeModel.deleteEmployee(String.valueOf(cmbEmployeeId.getValue()));
+            boolean isDeleted = employeeBO.delete(String.valueOf(cmbEmployeeId.getValue()));
 
             if(isDeleted){
 

@@ -5,8 +5,6 @@ import javafx.collections.ObservableList;
 import lk.ijse.spicesystem.bo.custom.FinishedItemBO;
 import lk.ijse.spicesystem.dao.DAOFactory;
 import lk.ijse.spicesystem.dao.custom.FinishedItemDAO;
-import lk.ijse.spicesystem.dto.FinishedItemDTO;
-import lk.ijse.spicesystem.entity.FinishedItem;
 
 import java.sql.SQLException;
 
@@ -15,12 +13,12 @@ public class FinishedItemBOImpl implements FinishedItemBO {
     FinishedItemDAO finishedItemDAO = (FinishedItemDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.FINISHEDITEM);
 
     @Override
-    public ObservableList<FinishedItemDTO> getFinishedItem(String item) throws SQLException, ClassNotFoundException {
-        ObservableList<FinishedItem> finishedItems = finishedItemDAO.getFinishedItem(item);
-        ObservableList<FinishedItemDTO> finishedItemDTOS = FXCollections.observableArrayList();
+    public ObservableList<String> getFinishedItem(String item) throws SQLException, ClassNotFoundException {
+        ObservableList<String> finishedItems = finishedItemDAO.getFinishedItem(item);
+        ObservableList<String> finishedItemDTOS = FXCollections.observableArrayList();
 
-        for (FinishedItem f : finishedItems) {
-            finishedItemDTOS.add(new FinishedItemDTO(f.getBarcodeNo(), f.getFinishedItem(), f.getAmountInStock(), f.getWeightByPacket(), f.getProduction()));
+        for (String f : finishedItems) {
+            finishedItemDTOS.add(f);
         }
 
         return finishedItemDTOS;

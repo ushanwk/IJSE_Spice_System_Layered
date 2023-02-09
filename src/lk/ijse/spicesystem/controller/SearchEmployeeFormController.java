@@ -4,7 +4,9 @@ import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.spicesystem.modelBefore.EmployeeModel;
+import lk.ijse.spicesystem.bo.BOFactory;
+import lk.ijse.spicesystem.bo.custom.EmployeeBO;
+//import lk.ijse.spicesystem.modelBefore.EmployeeModel;
 import lk.ijse.spicesystem.entity.Employee;
 import lk.ijse.spicesystem.util.Navigation;
 import lk.ijse.spicesystem.util.Routes;
@@ -22,9 +24,11 @@ public class SearchEmployeeFormController {
     public Label lblJobRole;
     public AnchorPane dashboardPane;
 
+    EmployeeBO employeeBO = (EmployeeBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.EMPLOYEE);
+
     public void initialize(){
         try {
-            cmbEmployeeId.setItems(EmployeeModel.getAllEmpId());
+            cmbEmployeeId.setItems(employeeBO.getAllId());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -33,7 +37,7 @@ public class SearchEmployeeFormController {
     public void cmbEmployeeIdOnAction(ActionEvent actionEvent) {
 
         try {
-            Employee employee = EmployeeModel.searchEmployee(String.valueOf(cmbEmployeeId.getValue()));
+            Employee employee = employeeBO.search(String.valueOf(cmbEmployeeId.getValue()));
 
             lblFirstName.setText(employee.getFirstName());
             lblSecondName.setText(employee.getLastName());

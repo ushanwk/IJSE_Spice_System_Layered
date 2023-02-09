@@ -12,14 +12,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Paint;
 import javafx.util.Duration;
 import lk.ijse.spicesystem.bo.BOFactory;
-import lk.ijse.spicesystem.bo.custom.FinanceBO;
-import lk.ijse.spicesystem.bo.custom.MaterialBO;
-import lk.ijse.spicesystem.bo.custom.PaymentMethodBO;
-import lk.ijse.spicesystem.bo.custom.RawStockBO;
+import lk.ijse.spicesystem.bo.custom.*;
 import lk.ijse.spicesystem.dao.DAOFactory;
 import lk.ijse.spicesystem.dto.RawStockDTO;
-import lk.ijse.spicesystem.modelBefore.RawStockModel;
-import lk.ijse.spicesystem.modelBefore.SupplierModel;
 import org.controlsfx.control.Notifications;
 
 import java.sql.Date;
@@ -43,7 +38,7 @@ public class AddRawStockFormController {
         lblDate.setText(getDate("yyyy-MM-dd"));
 
         try {
-            cmbRawItem.setItems(RawStockModel.getAllMaterials());
+            cmbRawItem.setItems(materialBO.getAllMaterials());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -68,8 +63,8 @@ public class AddRawStockFormController {
         String firstLetter = String.valueOf(id.charAt(0));
 
         try {
-            lblBatchId.setText(RawStockModel.nextBatchID(firstLetter));
-            cmbSupplierID.setItems(SupplierModel.getAllSupId());
+            lblBatchId.setText(rawStockBO.nextBatchID(firstLetter));
+            cmbSupplierID.setItems(supplierBO.getAllId());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -79,8 +74,8 @@ public class AddRawStockFormController {
     public void cmbSupplierIDOnAction(ActionEvent actionEvent) {
         String supId = String.valueOf(cmbSupplierID.getValue());
         try {
-            lblSupplierName.setText(SupplierModel.searchSupplier(supId).getSupplierName());
-            cmbPaymentMethod.setItems(RawStockModel.getAllPaymentmethods());
+            lblSupplierName.setText(supplierBO.search(supId).getSupplierName());
+            cmbPaymentMethod.setItems(paymentMethodBO.paymentmethod());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -92,6 +87,7 @@ public class AddRawStockFormController {
     MaterialBO materialBO = (MaterialBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.MATERIAL);
     PaymentMethodBO paymentMethodBO = (PaymentMethodBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENTMETHOD);
     FinanceBO financeBO = (FinanceBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.FINANCE);
+    SupplierBO supplierBO = (SupplierBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SUPPLIER);
 
     public void btnSubmitOnAction(ActionEvent actionEvent) {
 
@@ -103,7 +99,7 @@ public class AddRawStockFormController {
             boolean isAdded = rawStockBO.add(rawStockDTO);
             boolean isUpdated = materialBO.updateMaterial(Integer.valueOf(txtAmount.getText()), materialId);
             boolean isUpdatedCost = paymentMethodBO.updatePaymentMethodMinus(Integer.valueOf(txtCost.getText()), String.valueOf(cmbPaymentMethod.getValue()));
-            boolean isUpdateFinance = financeBO.updateFinance(RawStockModel.getPaymentId(String.valueOf(cmbPaymentMethod.getValue())), Integer.valueOf(txtCost.getText()));
+            boolean isUpdateFinance = financeBO.updateFinance(paymentMethodBO.getPaymentId(String.valueOf(cmbPaymentMethod.getValue())), Integer.valueOf(txtCost.getText()));
 
             if(isAdded && isUpdated && isUpdatedCost && isUpdateFinance){
 

@@ -4,8 +4,13 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.spicesystem.modelBefore.SupplierModel;
+//import lk.ijse.spicesystem.modelBefore.SupplierModel;
+import lk.ijse.spicesystem.bo.BOFactory;
+import lk.ijse.spicesystem.bo.SuperBO;
+import lk.ijse.spicesystem.bo.custom.SupplierBO;
+import lk.ijse.spicesystem.dto.SupplierDTO;
 import lk.ijse.spicesystem.entity.Supplier;
+//import lk.ijse.spicesystem.modelBefore.SupplierModel;
 import lk.ijse.spicesystem.util.Navigation;
 import lk.ijse.spicesystem.util.Routes;
 
@@ -20,9 +25,11 @@ public class UpdateSupplierFormController {
     public JFXTextField txtAddress;
     public AnchorPane dashboardPane;
 
+    SupplierBO supplierBO = (SupplierBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SUPPLIER);
+
     public void initialize(){
         try {
-            cmbSupplierId.setItems(SupplierModel.getAllSupId());
+            cmbSupplierId.setItems(supplierBO.getAllId());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -30,7 +37,7 @@ public class UpdateSupplierFormController {
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
 
-        Supplier supplier = new Supplier(
+        SupplierDTO supplier = new SupplierDTO(
                 String.valueOf(cmbSupplierId.getValue()),
                 txtSupplierName.getText(),
                 txtAddress.getText(),
@@ -39,7 +46,7 @@ public class UpdateSupplierFormController {
         );
 
         try {
-            boolean isUpdated = SupplierModel.updateSupplier(supplier);
+            boolean isUpdated = supplierBO.update(supplier);
 
             if(isUpdated){
                 System.out.println("Done");
@@ -57,7 +64,7 @@ public class UpdateSupplierFormController {
         String id = String.valueOf(cmbSupplierId.getValue());
 
         try {
-            Supplier supplier = SupplierModel.searchSupplier(id);
+            Supplier supplier = supplierBO.search(id);
 
             txtSupplierName.setText(supplier.getSupplierName());
             txtSupplierEmail.setText(supplier.getEmail());

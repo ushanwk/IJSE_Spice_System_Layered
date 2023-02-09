@@ -13,7 +13,7 @@ import lk.ijse.spicesystem.bo.BOFactory;
 import lk.ijse.spicesystem.bo.custom.EmployeeBO;
 import lk.ijse.spicesystem.dao.DAOFactory;
 import lk.ijse.spicesystem.dto.EmployeeDTO;
-import lk.ijse.spicesystem.modelBefore.EmployeeModel;
+//import lk.ijse.spicesystem.modelBefore.EmployeeModel;
 import lk.ijse.spicesystem.util.Navigation;
 import lk.ijse.spicesystem.util.Routes;
 import org.controlsfx.control.Notifications;
@@ -45,7 +45,7 @@ public class AddEmployeeFormController {
 
 
         try {
-            lblEmpId.setText(EmployeeModel.nextEmployeeId());
+            lblEmpId.setText(employeeBO.nextEmployeeId());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

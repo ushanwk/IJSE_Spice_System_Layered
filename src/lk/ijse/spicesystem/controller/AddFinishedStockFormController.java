@@ -18,7 +18,6 @@ import lk.ijse.spicesystem.bo.custom.ProductionStockBO;
 import lk.ijse.spicesystem.dao.DAOFactory;
 import lk.ijse.spicesystem.db.DBConnection;
 import lk.ijse.spicesystem.dto.FinishedStockDTO;
-import lk.ijse.spicesystem.modelBefore.FinishedStockModel;
 import org.controlsfx.control.Notifications;
 
 import java.sql.SQLException;
@@ -74,7 +73,7 @@ public class AddFinishedStockFormController {
     public void cmbProductionStockIdOnAction(ActionEvent actionEvent) {
 
         try {
-            lblQtyOnHand.setText(String.valueOf(FinishedStockModel.getQtyOnHand(String.valueOf(cmbProductionStockId.getValue()))));
+            lblQtyOnHand.setText(String.valueOf(finishedItemBO.getQtyOnHand(String.valueOf(cmbProductionStockId.getValue()))));
             cmbFinishedItem.setItems(finishedItemBO.getFinishedItem(String.valueOf(cmbProductionItem.getValue())));
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);

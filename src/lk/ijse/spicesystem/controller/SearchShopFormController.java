@@ -6,7 +6,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import lk.ijse.spicesystem.modelBefore.ShopModel;
+//import lk.ijse.spicesystem.modelBefore.ShopModel;
+import lk.ijse.spicesystem.bo.BOFactory;
+import lk.ijse.spicesystem.bo.custom.ShopBO;
+import lk.ijse.spicesystem.dto.ShopDTO;
 import lk.ijse.spicesystem.entity.Shop;
 import lk.ijse.spicesystem.util.Navigation;
 import lk.ijse.spicesystem.util.Routes;
@@ -28,12 +31,14 @@ public class SearchShopFormController {
     public Label lblOwnerTelephones;
     public AnchorPane dashboardPane;
 
+    ShopBO shopBO = (ShopBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SHOP);
+
     public void initialize(){
         imgDotOne.setVisible(true);
         imgDotTwo.setVisible(false);
 
         try {
-            cmbShopId.setItems(ShopModel.getAllShopId());
+            cmbShopId.setItems(shopBO.getAllId());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -47,7 +52,7 @@ public class SearchShopFormController {
         String id = String.valueOf(cmbShopId.getValue());
 
         try {
-            Shop shop = ShopModel.searchShop(id);
+            ShopDTO shop = shopBO.search(id);
 
             lblShopName.setText(shop.getShopName());
             lblAddress.setText(shop.getAddress());

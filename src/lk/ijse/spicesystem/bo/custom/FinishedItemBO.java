@@ -2,12 +2,11 @@ package lk.ijse.spicesystem.bo.custom;
 
 import javafx.collections.ObservableList;
 import lk.ijse.spicesystem.bo.SuperBO;
-import lk.ijse.spicesystem.dto.FinishedItemDTO;
 
 import java.sql.SQLException;
 
 public interface FinishedItemBO extends SuperBO {
-    public ObservableList<FinishedItemDTO> getFinishedItem(String item) throws SQLException, ClassNotFoundException;
+    public ObservableList<String> getFinishedItem(String item) throws SQLException, ClassNotFoundException;
     public String getBarcode(String finishedItem) throws SQLException, ClassNotFoundException;
     public boolean updateFinishedItemTable(String barcodeNo, int amount) throws SQLException, ClassNotFoundException;
     public String getQtyOnHand(String finishedItem) throws SQLException, ClassNotFoundException;

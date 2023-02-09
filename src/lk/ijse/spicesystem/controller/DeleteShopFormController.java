@@ -3,16 +3,18 @@ package lk.ijse.spicesystem.controller;
 import com.jfoenix.controls.JFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import lk.ijse.spicesystem.bo.BOFactory;
 import lk.ijse.spicesystem.bo.custom.ShopBO;
 import lk.ijse.spicesystem.dto.ShopDTO;
-import lk.ijse.spicesystem.modelBefore.ShopModel;
 import lk.ijse.spicesystem.entity.Shop;
 import lk.ijse.spicesystem.util.Navigation;
 import lk.ijse.spicesystem.util.Routes;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -39,7 +41,7 @@ public class DeleteShopFormController {
         imgDotThree.setVisible(false);
 
         try {
-            cmbShopId.setItems(ShopModel.getAllShopId());
+            cmbShopId.setItems(shopBO.getAllId());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -85,7 +87,13 @@ public class DeleteShopFormController {
             boolean isDeleted = shopBO.delete(String.valueOf(cmbShopId.getValue()));
 
             if(isDeleted){
-                System.out.println("Done");
+                Image image = new Image("/lk/ijse/spicesystem/asset/correct.png");
+                Notifications notifications = Notifications.create();
+                notifications.graphic(new ImageView(image));
+                notifications.text("Deleted Suuccesful");
+                notifications.title("Spice System");
+                notifications.hideAfter(Duration.seconds(3));
+                notifications.show();
             }
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);

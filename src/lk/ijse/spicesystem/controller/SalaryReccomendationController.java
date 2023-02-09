@@ -6,10 +6,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
+import lk.ijse.spicesystem.bo.BOFactory;
+import lk.ijse.spicesystem.bo.custom.EmployeeBO;
+import lk.ijse.spicesystem.bo.custom.PaymentMethodBO;
 import lk.ijse.spicesystem.db.DBConnection;
-import lk.ijse.spicesystem.modelBefore.SalaryRecomendationModel;
+import org.controlsfx.control.Notifications;
+//import lk.ijse.spicesystem.modelBefore.SalaryRecomendationModel;
 
 import java.sql.SQLException;
 
@@ -24,12 +31,14 @@ public class SalaryReccomendationController {
     public AnchorPane dashboardPane;
 
     ObservableList month = FXCollections.observableArrayList();
+    PaymentMethodBO paymentMethodBO = (PaymentMethodBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENTMETHOD);
+    EmployeeBO employeeBO = (EmployeeBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.EMPLOYEE);
 
     public void initialize(){
         month.addAll("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
 
         try {
-            cmbEmployeeId.setItems(SalaryRecomendationModel.getEmployeeId());
+            cmbEmployeeId.setItems(employeeBO.getAllId());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -38,10 +47,10 @@ public class SalaryReccomendationController {
     public void cmbEmployeeIdOnAction(ActionEvent actionEvent) {
 
         try {
-            lblEmployee.setText(SalaryRecomendationModel.getEmployeeName(String.valueOf(cmbEmployeeId.getValue())));
-            lblSalaryPerDay.setText(String.valueOf(SalaryRecomendationModel.getEmployeeSalary(String.valueOf(cmbEmployeeId.getValue()))));
+            lblEmployee.setText(employeeBO.getEmployeeName(String.valueOf(cmbEmployeeId.getValue())));
+            lblSalaryPerDay.setText(String.valueOf(employeeBO.getEmployeeSalary(String.valueOf(cmbEmployeeId.getValue()))));
             cmbMonth.setItems(month);
-            cmbPaymentMethod.setItems(SalaryRecomendationModel.getPaymentMethods());
+            cmbPaymentMethod.setItems(paymentMethodBO.paymentmethod());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -51,10 +60,20 @@ public class SalaryReccomendationController {
     public void btnsubmitOnAction(ActionEvent actionEvent) {
 
         try {
-            boolean isUpdate = SalaryRecomendationModel.updatePaymentMethod(String.valueOf(cmbPaymentMethod.getValue()), Double.valueOf(lblCost.getText()));
+            boolean isUpdate = paymentMethodBO.updatePaymentMethod(String.valueOf(cmbPaymentMethod.getValue()), Double.valueOf(lblCost.getText()));
 
             if(isUpdate){
-                System.out.println("Done");
+
+                Image image = new Image("/lk/ijse/spicesystem/asset/correct.png");
+                Notifications notifications = Notifications.create();
+                notifications.graphic(new ImageView(image));
+                notifications.text("Added Suuccesful");
+                notifications.title("Spice System");
+                notifications.hideAfter(Duration.seconds(3));
+                notifications.show();
+
+                initialize();
+
             }
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
