@@ -29,11 +29,10 @@ public class AddSupplierFormController {
     public JFXTextField txtTelephone;
     public AnchorPane dashboardPane;
     SupplierBO supplierBO = (SupplierBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SUPPLIER);
-    ShopBO shopBO = (ShopBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SHOP);
 
     public void initialize(){
         try {
-            lblSupplierId.setText(shopBO.nextId());
+            lblSupplierId.setText(supplierBO.nextShopId());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

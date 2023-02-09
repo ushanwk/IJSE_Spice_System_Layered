@@ -37,9 +37,6 @@ public class AddFinishedStockFormController {
     public AnchorPane dashboardPane;
 
     FinishedStockBO finishedStockBO = (FinishedStockBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.FINISHEDSTOCK);
-    ProductionBO productionBO = (ProductionBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PRODUCTION);
-    ProductionStockBO productionStockBO = (ProductionStockBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PRODUCTIONSTOCK);
-    FinishedItemBO finishedItemBO = (FinishedItemBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.FINISHEDITEM);
 
     public void initialize(){
 
@@ -52,7 +49,7 @@ public class AddFinishedStockFormController {
 
         try {
             lblFinishedStockId.setText(finishedStockBO.nextId());
-            cmbProductionItem.setItems(productionBO.getProductionItem());
+            cmbProductionItem.setItems(finishedStockBO.getProductionItem());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -62,8 +59,8 @@ public class AddFinishedStockFormController {
     public void cmbProductionItemOnAction(ActionEvent actionEvent) {
 
         try {
-            lblProductionId.setText(productionBO.getProductionId(String.valueOf(cmbProductionItem.getValue())));
-            cmbProductionStockId.setItems(productionStockBO.getProductionStockId(lblProductionId.getText()));
+            lblProductionId.setText(finishedStockBO.getProductionId(String.valueOf(cmbProductionItem.getValue())));
+            cmbProductionStockId.setItems(finishedStockBO.getProductionStockId(lblProductionId.getText()));
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -73,8 +70,8 @@ public class AddFinishedStockFormController {
     public void cmbProductionStockIdOnAction(ActionEvent actionEvent) {
 
         try {
-            lblQtyOnHand.setText(String.valueOf(finishedItemBO.getQtyOnHand(String.valueOf(cmbProductionStockId.getValue()))));
-            cmbFinishedItem.setItems(finishedItemBO.getFinishedItem(String.valueOf(cmbProductionItem.getValue())));
+            lblQtyOnHand.setText(String.valueOf(finishedStockBO.getQtyOnHand(String.valueOf(cmbProductionStockId.getValue()))));
+            cmbFinishedItem.setItems(finishedStockBO.getFinishedItem(String.valueOf(cmbProductionItem.getValue())));
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -84,7 +81,7 @@ public class AddFinishedStockFormController {
     public void cmbFinishedItemOnAction(ActionEvent actionEvent) {
 
         try {
-            lblBarcode.setText(finishedItemBO.getBarcode(String.valueOf(cmbFinishedItem.getValue())));
+            lblBarcode.setText(finishedStockBO.getBarcode(String.valueOf(cmbFinishedItem.getValue())));
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -100,15 +97,15 @@ public class AddFinishedStockFormController {
 
             DBConnection.getInstance().getConnection().setAutoCommit(false);
 
-            boolean isUpdateProduction = productionBO.updateProductionTable(lblProductionId.getText(), Integer.valueOf(txtAmount.getText()));
+            boolean isUpdateProduction = finishedStockBO.updateProductionTable(lblProductionId.getText(), Integer.valueOf(txtAmount.getText()));
 
             if(isUpdateProduction){
 
-                boolean isUpdateProductionStock = productionStockBO.updateProductionStockTable(String.valueOf(cmbProductionStockId.getValue()), Integer.valueOf(txtAmount.getText()));
+                boolean isUpdateProductionStock = finishedStockBO.updateProductionStockTable(String.valueOf(cmbProductionStockId.getValue()), Integer.valueOf(txtAmount.getText()));
 
                 if(isUpdateProductionStock){
 
-                    boolean isUpdateFinishedItem = finishedItemBO.updateFinishedItemTable(lblBarcode.getText(), Integer.valueOf(txtAmount.getText()));
+                    boolean isUpdateFinishedItem = finishedStockBO.updateFinishedItemTable(lblBarcode.getText(), Integer.valueOf(txtAmount.getText()));
 
                     if(isUpdateFinishedItem){
 

@@ -30,17 +30,11 @@ public class PlaceOrderFormController {
 
 
     PlaceOrderBO placeOrderBO = (PlaceOrderBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PLACEORDER);
-    FinishedItemBO finishedItemBO = (FinishedItemBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.FINISHEDITEM);
-    FinanceBO financeBO = (FinanceBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.FINANCE);
-    PaymentMethodBO paymentMethodBO = (PaymentMethodBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENTMETHOD);
-    ShopBO shopBO = (ShopBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SHOP);
-    ProductionBO productionBO = (ProductionBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PRODUCTION);
-
 
     public void initialize(){
 
         try {
-            cmbShopId.setItems(shopBO.getAllId());
+            cmbShopId.setItems(placeOrderBO.getAllId());
             lblOrderId.setText(placeOrderBO.nextId());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
@@ -51,8 +45,8 @@ public class PlaceOrderFormController {
     public void cmbShopIdOnAction(ActionEvent actionEvent) {
 
         try {
-            lblShop.setText(String.valueOf(shopBO.getShopName(String.valueOf(cmbShopId.getValue()))));
-            cmbProductionItem.setItems(productionBO.getProductionItem());
+            lblShop.setText(String.valueOf(placeOrderBO.getShopName(String.valueOf(cmbShopId.getValue()))));
+            cmbProductionItem.setItems(placeOrderBO.getProductionItem());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -62,7 +56,7 @@ public class PlaceOrderFormController {
     public void cmbProductionItemOnAction(ActionEvent actionEvent) {
 
         try {
-            cmbFinishedItem.setItems(finishedItemBO.getFinishedItem(String.valueOf(cmbProductionItem.getValue())));
+            cmbFinishedItem.setItems(placeOrderBO.getFinishedItem(String.valueOf(cmbProductionItem.getValue())));
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -72,8 +66,8 @@ public class PlaceOrderFormController {
     public void cmbFinishedItemOnAction(ActionEvent actionEvent) {
 
         try {
-            lblItemOnStock.setText(finishedItemBO.getQtyOnHand(String.valueOf(cmbFinishedItem.getValue())));
-            cmbPaymeneMethod.setItems(paymentMethodBO.paymentmethod());
+            lblItemOnStock.setText(placeOrderBO.getQtyOnHand(String.valueOf(cmbFinishedItem.getValue())));
+            cmbPaymeneMethod.setItems(placeOrderBO.paymentmethod());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -94,7 +88,7 @@ public class PlaceOrderFormController {
 
             DBConnection.getInstance().getConnection().setAutoCommit(false);
 
-            boolean isUpdateFinished = finishedItemBO.updateFinishedItem(String.valueOf(cmbFinishedItem.getValue()), Integer.valueOf(txtAmount.getText()));
+            boolean isUpdateFinished = placeOrderBO.updateFinishedItem(String.valueOf(cmbFinishedItem.getValue()), Integer.valueOf(txtAmount.getText()));
 
             if(isUpdateFinished) {
 
@@ -102,11 +96,11 @@ public class PlaceOrderFormController {
 
                 if(isUpdateOrder){
 
-                    boolean isUpdateFinance = financeBO.updateFinance(String.valueOf(cmbPaymeneMethod.getValue()), Integer.valueOf(txtPrice.getText()));
+                    boolean isUpdateFinance = placeOrderBO.updateFinance(String.valueOf(cmbPaymeneMethod.getValue()), Integer.valueOf(txtPrice.getText()));
 
                     if(isUpdateFinance){
 
-                        boolean isUpdatePaymentMethod = paymentMethodBO.updatePaymentMethod(String.valueOf(cmbPaymeneMethod.getValue()), Double.valueOf(txtPrice.getText()));
+                        boolean isUpdatePaymentMethod = placeOrderBO.updatePaymentMethod(String.valueOf(cmbPaymeneMethod.getValue()), Double.valueOf(txtPrice.getText()));
 
                         if(isUpdatePaymentMethod){
 

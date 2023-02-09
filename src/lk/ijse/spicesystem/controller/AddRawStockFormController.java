@@ -34,11 +34,14 @@ public class AddRawStockFormController {
     public JFXTextField txtCost;
     public JFXComboBox cmbPaymentMethod;
 
+
+    RawStockBO rawStockBO = (RawStockBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.RAWSTOCK);
+
     public void initialize(){
         lblDate.setText(getDate("yyyy-MM-dd"));
 
         try {
-            cmbRawItem.setItems(materialBO.getAllMaterials());
+            cmbRawItem.setItems(rawStockBO.getAllMaterials());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -64,7 +67,7 @@ public class AddRawStockFormController {
 
         try {
             lblBatchId.setText(rawStockBO.nextBatchID(firstLetter));
-            cmbSupplierID.setItems(supplierBO.getAllId());
+            cmbSupplierID.setItems(rawStockBO.getAllId());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -74,20 +77,14 @@ public class AddRawStockFormController {
     public void cmbSupplierIDOnAction(ActionEvent actionEvent) {
         String supId = String.valueOf(cmbSupplierID.getValue());
         try {
-            lblSupplierName.setText(supplierBO.search(supId).getSupplierName());
-            cmbPaymentMethod.setItems(paymentMethodBO.paymentmethod());
+            lblSupplierName.setText(rawStockBO.search(supId).getSupplierName());
+            cmbPaymentMethod.setItems(rawStockBO.paymentmethod());
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
 
     }
-
-    RawStockBO rawStockBO = (RawStockBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.RAWSTOCK);
-    MaterialBO materialBO = (MaterialBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.MATERIAL);
-    PaymentMethodBO paymentMethodBO = (PaymentMethodBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENTMETHOD);
-    FinanceBO financeBO = (FinanceBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.FINANCE);
-    SupplierBO supplierBO = (SupplierBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.SUPPLIER);
 
     public void btnSubmitOnAction(ActionEvent actionEvent) {
 
@@ -97,9 +94,9 @@ public class AddRawStockFormController {
         try {
 
             boolean isAdded = rawStockBO.add(rawStockDTO);
-            boolean isUpdated = materialBO.updateMaterial(Integer.valueOf(txtAmount.getText()), materialId);
-            boolean isUpdatedCost = paymentMethodBO.updatePaymentMethodMinus(Integer.valueOf(txtCost.getText()), String.valueOf(cmbPaymentMethod.getValue()));
-            boolean isUpdateFinance = financeBO.updateFinance(paymentMethodBO.getPaymentId(String.valueOf(cmbPaymentMethod.getValue())), Integer.valueOf(txtCost.getText()));
+            boolean isUpdated = rawStockBO.updateMaterial(Integer.valueOf(txtAmount.getText()), materialId);
+            boolean isUpdatedCost = rawStockBO.updatePaymentMethodMinus(Integer.valueOf(txtCost.getText()), String.valueOf(cmbPaymentMethod.getValue()));
+            boolean isUpdateFinance = rawStockBO.updateFinance(rawStockBO.getPaymentId(String.valueOf(cmbPaymentMethod.getValue())), Integer.valueOf(txtCost.getText()));
 
             if(isAdded && isUpdated && isUpdatedCost && isUpdateFinance){
 

@@ -36,9 +36,6 @@ public class AddProductionStockFormController {
     ObservableList<String> material = FXCollections.observableArrayList();
 
     ProductionStockBO productionStockBO = (ProductionStockBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PRODUCTIONSTOCK);
-    RawStockBO rawStockBO = (RawStockBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.RAWSTOCK);
-    ProductionBO productionBO = (ProductionBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PRODUCTION);
-    MaterialBO materialBO = new MaterialBOImpl();
 
     public void initialize(){
 
@@ -69,7 +66,7 @@ public class AddProductionStockFormController {
         String materialId = String.valueOf((String.valueOf(cmbMaterial.getValue()).charAt(0)));
 
         try {
-            cmbBatchId.setItems(rawStockBO.getBatchID(materialId));
+            cmbBatchId.setItems(productionStockBO.getBatchID(materialId));
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -82,7 +79,7 @@ public class AddProductionStockFormController {
 
         try {
             lblQtyOnHand.setText(String.valueOf(productionStockBO.getQtyOnHand(batchId)));
-            cmbProduction.setItems(productionBO.getProduction(batchId));
+            cmbProduction.setItems(productionStockBO.getProduction(batchId));
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -117,15 +114,15 @@ public class AddProductionStockFormController {
 
             if(isAddedProductionStock){
 
-                boolean isAddedProduction = productionBO.productionTale(Integer.valueOf(txtAmount.getText()), String.valueOf(cmbProduction.getValue()));
+                boolean isAddedProduction = productionStockBO.productionTale(Integer.valueOf(txtAmount.getText()), String.valueOf(cmbProduction.getValue()));
 
                 if(isAddedProduction){
 
-                    boolean isAddedRawStock = rawStockBO.RawStockTable(Integer.valueOf(txtAmount.getText()), String.valueOf(cmbBatchId.getValue()));
+                    boolean isAddedRawStock = productionStockBO.RawStockTable(Integer.valueOf(txtAmount.getText()), String.valueOf(cmbBatchId.getValue()));
 
                     if(isAddedRawStock){
 
-                        boolean isAddedMaterial = materialBO.materialTable(Integer.valueOf(txtAmount.getText()), String.valueOf(cmbMaterial.getValue()));
+                        boolean isAddedMaterial = productionStockBO.materialTable(Integer.valueOf(txtAmount.getText()), String.valueOf(cmbMaterial.getValue()));
 
                         if(isAddedMaterial){
 

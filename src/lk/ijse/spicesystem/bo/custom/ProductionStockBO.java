@@ -13,4 +13,9 @@ public interface ProductionStockBO extends SuperBO {
     public ObservableList getProductionStockId(String productionId) throws SQLException, ClassNotFoundException;
     public int getQtyOnHand(String productionStockId) throws SQLException, ClassNotFoundException;
     public boolean updateProductionStockTable(String productionStockId, int amount) throws SQLException, ClassNotFoundException;
+    public ObservableList<String> getBatchID(String materialId) throws SQLException, ClassNotFoundException;
+    public boolean RawStockTable(int amount, String batchId) throws SQLException, ClassNotFoundException;
+    public ObservableList getProduction(String id) throws SQLException, ClassNotFoundException;
+    public boolean productionTale(int amount, String productionItem) throws SQLException, ClassNotFoundException;
+    public boolean materialTable(int amount, String material) throws SQLException, ClassNotFoundException;
 }

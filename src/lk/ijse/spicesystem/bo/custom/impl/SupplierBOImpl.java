@@ -3,6 +3,7 @@ package lk.ijse.spicesystem.bo.custom.impl;
 import javafx.collections.ObservableList;
 import lk.ijse.spicesystem.bo.custom.SupplierBO;
 import lk.ijse.spicesystem.dao.DAOFactory;
+import lk.ijse.spicesystem.dao.custom.ShopDAO;
 import lk.ijse.spicesystem.dao.custom.SupplierDAO;
 import lk.ijse.spicesystem.dto.SupplierDTO;
 import lk.ijse.spicesystem.entity.Supplier;
@@ -12,6 +13,7 @@ import java.sql.SQLException;
 public class SupplierBOImpl implements SupplierBO {
 
     SupplierDAO supplierDAO = (SupplierDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.SUPPLIER);
+    ShopDAO shopDAO = (ShopDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.SHOP);
 
     @Override
     public String nextId() throws SQLException, ClassNotFoundException {
@@ -43,5 +45,9 @@ public class SupplierBOImpl implements SupplierBO {
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
         return supplierDAO.delete(id);
+    }
+
+    public String nextShopId() throws SQLException, ClassNotFoundException {
+        return shopDAO.nextId();
     }
 }

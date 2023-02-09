@@ -14,4 +14,5 @@ public interface SupplierBO extends SuperBO {
     public Supplier search(String id) throws SQLException, ClassNotFoundException;
     public boolean update(SupplierDTO supplierDTO) throws SQLException, ClassNotFoundException;
     public boolean delete(String id) throws SQLException, ClassNotFoundException;
+    public String nextShopId() throws SQLException, ClassNotFoundException;
 }
